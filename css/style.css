@@ -1,0 +1,23 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #ffffff;
+    overflow: hidden;
+}
+
+.golfCourse {
+    width: 1200px;
+    height: 600px;
+    background-color: #00a72a;
+    border-radius: 20px; /* Rundade hörn */
+    border: 5px solid #333; /* Mörkgrå ram */
+    display: block;
+}
+
+canvas {
+
+    background-color: #e0e0e0;
+}
