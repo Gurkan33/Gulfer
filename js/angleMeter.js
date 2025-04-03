@@ -18,8 +18,13 @@ export let shootAngle = 0;
 
 // Funktion för att rita mätaren (vertikal version)
 export function drawAngleMeter() {
-    ctx.fillStyle = 'gray';
-    ctx.fillRect(canvas.width - 50, meter.y, 30, 30); // Bakgrund till mätaren (vertikal)
+
+    ctx.fillStyle = "grey"
+    ctx.fillRect(canvas.width-60,75,50,canvas.height-150)
+       
+    ctx.strokeStyle = 'rgb(58, 58, 58)'; 
+    ctx.lineWidth = 4;  
+    ctx.strokeRect(canvas.width - 60, 75, 50, canvas.height - 150); // Ram runt mätaren
 
     ctx.fillStyle = 'black';
     ctx.fillRect(canvas.width - 50, meter.y, 30, meter.height); // Själva mätaren (vertikal)
@@ -31,7 +36,7 @@ export function updateAngleMeter() {
         meter.y += meter.speed;
 
         // Om mätaren går utanför canvas, ändra riktning
-        if (meter.y + meter.height > canvas.height || meter.y < 0) {
+        if (meter.y + meter.height > canvas.height-100 || meter.y < 100) {
             meter.speed = -meter.speed;
         }
     }

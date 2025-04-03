@@ -30,7 +30,7 @@ function detectCollision() {
             let dy = ball.y - obj.y;
             let distance = Math.sqrt(dx * dx + dy * dy);
             if (distance < ball.radius + obj.radius) {
-                console.log('Bollen träffade en cirkel (objekt ' + (index + 1) + ')');
+                //console.log('Bollen träffade en cirkel (objekt ' + (index + 1) + ')');
                 // Trigger event för cirkelkollision
                 handleHitEvent(obj);
             }
@@ -38,7 +38,7 @@ function detectCollision() {
             // Kollision mellan bollen och en fyrkant
             if (ball.x + ball.radius > obj.x && ball.x - ball.radius < obj.x + obj.width &&
                 ball.y + ball.radius > obj.y && ball.y - ball.radius < obj.y + obj.height) {
-                console.log('Bollen träffade en fyrkant (objekt ' + (index + 1) + ')');
+                //console.log('Bollen träffade en fyrkant (objekt ' + (index + 1) + ')');
                 // Trigger event för fyrkantskollision
                 handleHitEvent(obj);
             }
@@ -49,9 +49,9 @@ function detectCollision() {
 function handleHitEvent(obj) {
     // Sätt olika event här beroende på objektet
     if (obj.color === 'red') {
-        alert('Bollen träffade det röda objektet (cirkel)');
+        //alert('Bollen träffade det röda objektet (cirkel)');
     } else if (obj.color === 'blue') {
-        alert('Bollen träffade det blå objektet (fyrkant)');
+        //alert('Bollen träffade det blå objektet (fyrkant)');
     }
     
     // Stanna bollen efter kollisionen

@@ -13,7 +13,7 @@ color: color of shaper or hitbox, sprite: "none"// no sprite - "SPRITE URL HERE"
 export let objects = [ 
     { x: 100, y: 150, radius: 30, hitbox: 'circle', color: 'red', sprite: "none"},
     { x: 400, y: 300, width: 150, height: 20, hitbox: 'rectangle', color: 'blue', sprite: "none"},
-    { x: 1400, y: 500, radius: 30, hitbox: 'circle', color: 'red', sprite: "../assets/rock.png", offsetX: 200, offsety: 200, size:100}
+    { x: 1400, y: 500, radius: 30, hitbox: 'circle', color: '', sprite: "../assets/rock.png", offsetX: 200, offsety: 200, size:100}
 ];
 
 export function drawObjects() {
