@@ -1,4 +1,12 @@
-const ball = {
+const canvas = document.getElementById('gameCanvas');
+const ctx = canvas.getContext('2d');
+
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+/*------------------------------------------------------------------------------------*/
+
+export let ball = {
     x: canvas.width / 2,
     y: canvas.height - 30,
     radius: 15,
@@ -7,18 +15,19 @@ const ball = {
     directionY: 0,
 };
 
-function drawBall() {
+export function drawBall() {
     ctx.beginPath();
     ctx.arc(ball.x, ball.y, ball.radius, 0, Math.PI * 2);
-    ctx.fillStyle = '#00ff00';
+    ctx.fillStyle = 'white';
     ctx.fill();
     ctx.closePath();
 }
 
-function moveBall() {
+export function moveBall() {
     ball.x += ball.directionX;
     ball.y += ball.directionY;
 
+    // Kollision med väggarna
     if (ball.x + ball.radius > canvas.width || ball.x - ball.radius < 0) {
         ball.directionX = -ball.directionX;
     }
@@ -28,7 +37,8 @@ function moveBall() {
     }
 }
 
-function shootBall(event) {
+export function shootBall(event) {
+    // Beräkna bollens riktning baserat på musens position
     let dx = event.clientX - ball.x;
     let dy = event.clientY - ball.y;
     let distance = Math.sqrt(dx * dx + dy * dy);

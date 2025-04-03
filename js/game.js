@@ -4,70 +4,21 @@ const ctx = canvas.getContext('2d');
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
-let ball = {
-    x: canvas.width / 2,
-    y: canvas.height - 30,
-    radius: 15,
-    speed: 5,
-    directionX: 0,
-    directionY: 0,
-};
+import{
+    ball,
+    drawBall,
+    moveBall,
+    shootBall
 
-const images = {
-    boll: new Image(),
-};
+}from "./ball.js"
 
-images.boll.src = '../assets/sprites/boll.png';
+import{
+    objects,
+    drawObjects,
+}from "./objects.js"
 
-let objects = [
-    { x: 100, y: 150, radius: 30, type: 'circle', color: 'red', sprite: "none" },
-    { x: 400, y: 300, width: 150, height: 20, type: 'rectangle', color: 'blue', sprite: "none" },
-    { x: 750, y: 500, width: 150, height: 20, type: 'circle', color: 'blue', sprite: "images.boll" }
 
-];
 
-function drawBall() {
-    ctx.beginPath();
-    ctx.arc(ball.x, ball.y, ball.radius, 0, Math.PI * 2);
-    ctx.fillStyle = 'white';
-    ctx.fill();
-    ctx.closePath();
-}
-
-function drawObjects() {
-    objects.forEach(obj => {
-
-        if(obj.sprite === "none"){
-            ctx.fillStyle = obj.color;
-        }
-        else{
-            ctx.drawImage(obj.sprite, obj.x, obj.y, obj.width, obj.height);
-        }
-
-        if (obj.type === 'circle') {
-            ctx.beginPath();
-            ctx.arc(obj.x, obj.y, obj.radius, 0, Math.PI * 2);
-            ctx.fill();
-            ctx.closePath();
-        } else if (obj.type === 'rectangle') {
-            ctx.fillRect(obj.x, obj.y, obj.width, obj.height);
-        }
-    });
-}
-
-function moveBall() {
-    ball.x += ball.directionX;
-    ball.y += ball.directionY;
-
-    // Kollision med väggarna
-    if (ball.x + ball.radius > canvas.width || ball.x - ball.radius < 0) {
-        ball.directionX = -ball.directionX;
-    }
-
-    if (ball.y + ball.radius > canvas.height || ball.y - ball.radius < 0) {
-        ball.directionY = -ball.directionY;
-    }
-}
 
 function detectCollision() {
     objects.forEach((obj, index) => {
@@ -106,14 +57,7 @@ function handleHitEvent(obj) {
     ball.directionY = 0;
 }
 
-function shootBall(event) {
-    // Beräkna bollens riktning baserat på musens position
-    let dx = event.clientX - ball.x;
-    let dy = event.clientY - ball.y;
-    let distance = Math.sqrt(dx * dx + dy * dy);
-    ball.directionX = (dx / distance) * ball.speed;
-    ball.directionY = (dy / distance) * ball.speed;
-}
+
 
 canvas.addEventListener('click', shootBall);
 
