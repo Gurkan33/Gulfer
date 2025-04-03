@@ -13,17 +13,9 @@ let ball = {
     directionY: 0,
 };
 
-const images = {
-    boll: new Image(),
-};
-
-images.boll.src = '../assets/sprites/boll.png';
-
 let objects = [
-    { x: 100, y: 150, radius: 30, type: 'circle', color: 'red', sprite: "none" },
-    { x: 400, y: 300, width: 150, height: 20, type: 'rectangle', color: 'blue', sprite: "none" },
-    { x: 750, y: 500, width: 150, height: 20, type: 'circle', color: 'blue', sprite: "images.boll" }
-
+    { x: 100, y: 150, radius: 30, type: 'circle', color: 'red' },
+    { x: 400, y: 300, width: 150, height: 20, type: 'rectangle', color: 'blue' }
 ];
 
 function drawBall() {
@@ -36,14 +28,7 @@ function drawBall() {
 
 function drawObjects() {
     objects.forEach(obj => {
-
-        if(obj.sprite === "none"){
-            ctx.fillStyle = obj.color;
-        }
-        else{
-            ctx.drawImage(obj.sprite, obj.x, obj.y, obj.width, obj.height);
-        }
-
+        ctx.fillStyle = obj.color;
         if (obj.type === 'circle') {
             ctx.beginPath();
             ctx.arc(obj.x, obj.y, obj.radius, 0, Math.PI * 2);
