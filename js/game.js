@@ -18,11 +18,9 @@ import{
 }from "./objects.js"
 
 
-
-
 function detectCollision() {
     objects.forEach((obj, index) => {
-        if (obj.type === 'circle') {
+        if (obj.hitbox === 'circle') {
             // Kollision mellan bollen och en cirkel
             let dx = ball.x - obj.x;
             let dy = ball.y - obj.y;
@@ -32,7 +30,7 @@ function detectCollision() {
                 // Trigger event för cirkelkollision
                 handleHitEvent(obj);
             }
-        } else if (obj.type === 'rectangle') {
+        } else if (obj.hitbox === 'rectangle') {
             // Kollision mellan bollen och en fyrkant
             if (ball.x + ball.radius > obj.x && ball.x - ball.radius < obj.x + obj.width &&
                 ball.y + ball.radius > obj.y && ball.y - ball.radius < obj.y + obj.height) {
