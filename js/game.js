@@ -12,26 +12,13 @@ import{
 
 }from "./ball.js"
 
-let objects = [
-    { x: 100, y: 150, radius: 30, type: 'circle', color: 'red' },
-    { x: 400, y: 300, width: 150, height: 20, type: 'rectangle', color: 'blue' }
-];
+import{
+    objects,
+    drawObjects,
+}from "./objects.js"
 
 
 
-function drawObjects() {
-    objects.forEach(obj => {
-        ctx.fillStyle = obj.color;
-        if (obj.type === 'circle') {
-            ctx.beginPath();
-            ctx.arc(obj.x, obj.y, obj.radius, 0, Math.PI * 2);
-            ctx.fill();
-            ctx.closePath();
-        } else if (obj.type === 'rectangle') {
-            ctx.fillRect(obj.x, obj.y, obj.width, obj.height);
-        }
-    });
-}
 
 function detectCollision() {
     objects.forEach((obj, index) => {
