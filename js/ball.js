@@ -8,7 +8,7 @@ canvas.height = window.innerHeight;
 
 import { course_levels } from "./course.js";
 
-import { shootAngle } from "./UI.js";
+import { shootAngle } from "./angleMeter.js";
 
 export let level = 1;
 

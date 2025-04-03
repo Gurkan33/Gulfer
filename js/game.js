@@ -9,15 +9,13 @@ import{
     drawBall,
     moveBall,
     shootBall,
-    drawMeter,
-    updateMeter
 
 }from "./ball.js"
 
 import{
-    drawMeter,
-    updateMeter
-}from "./UI.js"
+    drawAngleMeter,
+    updateAngleMeter
+}from "./angleMeter.js"
 
 import{
     objects,
@@ -69,8 +67,8 @@ function gameLoop() {
     ctx.clearRect(0, 0, canvas.width, canvas.height); // Rensa skärmen
     drawBall();
     drawObjects();
-    drawMeter();
-    updateMeter();
+    drawAngleMeter();
+    updateAngleMeter();
     moveBall();
     detectCollision();
     requestAnimationFrame(gameLoop); // Håll spelet igång
