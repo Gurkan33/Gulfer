@@ -26,6 +26,14 @@ export function drawObjects() {
             }
         }else{
 
+            const golfball = new Image();
+            console.log(golfball)
+            golfball.src = "golfspelare.png"
+
+            golfball.onLoad = function(){
+                ctx.drawImage(golfball, 100, 100);
+            }
+
             ctx.fillStyle = "rgba(0,1,1,1)";
             if (obj.hitbox === 'circle') {
                 ctx.beginPath();
