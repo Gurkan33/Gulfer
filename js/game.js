@@ -8,15 +8,21 @@ import{
     ball,
     drawBall,
     moveBall,
-    shootBall
+    shootBall,
+    drawMeter,
+    updateMeter
 
 }from "./ball.js"
+
+import{
+    drawMeter,
+    updateMeter
+}from "./UI.js"
 
 import{
     objects,
     drawObjects,
 }from "./objects.js"
-
 
 function detectCollision() {
     objects.forEach((obj, index) => {
@@ -63,6 +69,8 @@ function gameLoop() {
     ctx.clearRect(0, 0, canvas.width, canvas.height); // Rensa skärmen
     drawBall();
     drawObjects();
+    drawMeter();
+    updateMeter();
     moveBall();
     detectCollision();
     requestAnimationFrame(gameLoop); // Håll spelet igång

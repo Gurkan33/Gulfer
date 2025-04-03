@@ -6,14 +6,23 @@ canvas.height = window.innerHeight;
 
 /*------------------------------------------------------------------------------------*/
 
+import { course_levels } from "./course.js";
+
+import { shootAngle } from "./UI.js";
+
+export let level = 1;
+
+
 export let ball = {
-    x: canvas.width / 2,
-    y: canvas.height - 30,
+    x: course_levels[level].teeStartPosX,
+    y: course_levels[level].teeStartPosY,
     radius: 15,
-    speed: 5,
+    speed: 5, // Justerbar hastighet
+    angle: 0, // Justerbar vinkel i grader
     directionX: 0,
     directionY: 0,
-};
+}; 
+
 
 export function drawBall() {
     ctx.beginPath();
@@ -37,11 +46,18 @@ export function moveBall() {
     }
 }
 
-export function shootBall(event) {
-    // Beräkna bollens riktning baserat på musens position
-    let dx = event.clientX - ball.x;
-    let dy = event.clientY - ball.y;
-    let distance = Math.sqrt(dx * dx + dy * dy);
-    ball.directionX = (dx / distance) * ball.speed;
-    ball.directionY = (dy / distance) * ball.speed;
+export function shootBall() {
+    // Omvandla vinkel från grader till radianer
+    let angleInRadians = shootAngle * (Math.PI / 180);
+    
+    // Beräkna bollens rörelse baserat på hastighet och vinkel
+    ball.directionX = Math.cos(angleInRadians) * ball.speed;
+    ball.directionY = Math.sin(angleInRadians) * ball.speed;
 }
+
+// Lyssna på Space-knappen för att skjuta bollen
+document.addEventListener("keydown", function (event) {
+    if (event.code === "Space") {
+        shootBall();
+    }
+});
