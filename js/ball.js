@@ -15,7 +15,8 @@ export let ball = {
     x: course_levels[level].teeStartPosX,
     y: course_levels[level].teeStartPosY,
     radius: 10,
-    speed: 5, // Initial hastighet
+    shoot_speed: 50,
+    speed: 0, // Initial hastighet
     angle: 0, // Justerbar vinkel i grader
     directionX: 0,
     directionY: 0,
@@ -35,7 +36,7 @@ export function moveBall() {
     if (Math.abs(ball.directionX) < 0.01 && Math.abs(ball.directionY) < 0.01) {
         ball.directionX = 0;
         ball.directionY = 0;
-        ball.speed = 0; // Sätt hastigheten till 0 när bollen har stannat
+        ball.speed = 0 // Sätt hastigheten till 0 när bollen har stannat
         return;
     }
 
@@ -63,9 +64,8 @@ export function shootBall() {
     let angleInRadians = shootAngle * (Math.PI / 180);
 
     // Beräkna bollens rörelse baserat på hastighet och vinkel
-    
-    ball.directionX = Math.cos(angleInRadians) * ball.speed;
-    ball.directionY = Math.sin(angleInRadians) * ball.speed;
+    ball.directionX = Math.cos(angleInRadians) * ball.shoot_speed;
+    ball.directionY = Math.sin(angleInRadians) * ball.shoot_speed;
 }
 
 // Lyssna på Space-knappen för att skjuta bollen
