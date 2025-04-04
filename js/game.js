@@ -17,6 +17,9 @@ import{
     updateAngleMeter
 }from "./angleMeter.js"
 
+import { drawSpeedMeter, updateSpeedMeter, shootSpeed } from "./speedmeter.js";
+
+
 import{
     objects,
     drawObjects,
@@ -69,6 +72,8 @@ function gameLoop() {
     drawObjects();
     drawAngleMeter();
     updateAngleMeter();
+    drawSpeedMeter(); 
+    updateSpeedMeter();
     moveBall();
     detectCollision();
     requestAnimationFrame(gameLoop); // Håll spelet igång
