@@ -63,7 +63,7 @@ export function shootBall() {
     let angleInRadians = shootAngle * (Math.PI / 180);
 
     // Beräkna bollens rörelse baserat på hastighet och vinkel
-    ball.speed = 5;
+    
     ball.directionX = Math.cos(angleInRadians) * ball.speed;
     ball.directionY = Math.sin(angleInRadians) * ball.speed;
 }
