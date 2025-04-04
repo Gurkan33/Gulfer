@@ -7,7 +7,8 @@ canvas.height = window.innerHeight;
 /*------------------------------------------------------------------------------------*/
 
 import { course_levels } from "./course.js";
-import { shootAngle } from "./angleMeter.js";
+import { shootAngle, resetAngleMeter } from "./angleMeter.js";
+import { shootSpeed, resetSpeedMeter } from "./speedmeter.js";
 
 export let level = 1;
 
@@ -64,8 +65,11 @@ export function shootBall() {
     let angleInRadians = shootAngle * (Math.PI / 180);
 
     // Beräkna bollens rörelse baserat på hastighet och vinkel
-    ball.directionX = Math.cos(angleInRadians) * ball.shoot_speed;
-    ball.directionY = Math.sin(angleInRadians) * ball.shoot_speed;
+    ball.directionX = Math.cos(angleInRadians) * shootSpeed;
+    ball.directionY = Math.sin(angleInRadians) * shootSpeed;
+
+    resetSpeedMeter()
+    resetAngleMeter()
 }
 
 // Lyssna på Space-knappen för att skjuta bollen

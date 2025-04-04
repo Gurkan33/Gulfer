@@ -3,6 +3,7 @@ const ctx = canvas.getContext("2d");
 
 export let shootSpeed = 30; // Startvärde för hastigheten
 let increasing = true; // Om hastigheten ökar eller minskar
+let speedLocked = false; 
 
 export function drawSpeedMeter() {
     let meterWidth = 300;
@@ -26,15 +27,29 @@ export function drawSpeedMeter() {
 }
 
 export function updateSpeedMeter() {
-    if (increasing) {
-        shootSpeed += 1;
-        if (shootSpeed >= 100) {
-            increasing = false;
-        }
-    } else {
-        shootSpeed -= 1;
-        if (shootSpeed <= 10) {
-            increasing = true;
+    if (speedLocked === false){
+        if (increasing) {
+            shootSpeed += 1;
+            if (shootSpeed >= 100) {
+                increasing = false;
+            }
+        } else {
+            shootSpeed -= 1;
+            if (shootSpeed <= 10) {
+                increasing = true;
+            }
         }
     }
+}
+
+document.addEventListener("keydown", function(event){
+    if (event.code === "Enter"){
+        speedLocked = true; 
+        console.log("Hastigheten låst!" + shootSpeed)
+    }
+});
+
+export function resetSpeedMeter(){
+    speedLocked = false;
+    shootSpeed = 30;
 }

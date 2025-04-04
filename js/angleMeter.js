@@ -59,3 +59,9 @@ document.addEventListener("keydown", function (event) {
         console.log("Vinkel valdes: " + meter.angle + " grader");
     }
 });
+
+export function resetAngleMeter(){
+    meter.y = canvas.height - 150; // Återställ y-positionen
+    meter.isMoving = true; // Starta mätaren igen
+    shootAngle = 0; // Återställ vinkeln
+}
