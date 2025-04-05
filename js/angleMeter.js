@@ -6,10 +6,10 @@ canvas.height = window.innerHeight;
 
 // Mätarens egenskaper
 let meter = {
-    y: canvas.height - 150,  // Startposition för mätaren på y-axeln
+    y: canvas.height /2,  // Återställ y-positionen 
     speed: 5,
-    height: 20,  // Höjd på mätaren
-    width: 150,  // Bredden på mätaren (hur långt mätaren rör sig vertikalt)
+    buttonHeight: 20,  // Höjd på mätaren
+    length: 200,  // Bredden på mätaren (hur långt mätaren rör sig vertikalt)
     isMoving: true, // Håller koll på om mätaren rör sig eller inte
     angle: 0 // Vinkel mellan -90 och 90
 };
@@ -19,15 +19,17 @@ export let shootAngle = 0;
 // Funktion för att rita mätaren (vertikal version)
 export function drawAngleMeter() {
 
+    let height = canvas.height - (2 * meter.length);
+
     ctx.fillStyle = "grey"
-    ctx.fillRect(canvas.width-60,75,50,canvas.height-150)
+    ctx.fillRect(canvas.width - 60, meter.length, 50, height);
        
     ctx.strokeStyle = 'rgb(58, 58, 58)'; 
     ctx.lineWidth = 4;  
-    ctx.strokeRect(canvas.width - 60, 75, 50, canvas.height - 150); // Ram runt mätaren
+    ctx.strokeRect(canvas.width - 60, meter.length, 50, height); // Ram runt mätaren
 
     ctx.fillStyle = 'black';
-    ctx.fillRect(canvas.width - 50, meter.y, 30, meter.height); // Själva mätaren (vertikal)
+    ctx.fillRect(canvas.width - 50, meter.y, 30, meter.buttonHeight); // Själva mätaren
 }
 
 // Funktion för att uppdatera mätarens position
@@ -36,7 +38,7 @@ export function updateAngleMeter() {
         meter.y += meter.speed;
 
         // Om mätaren går utanför canvas, ändra riktning
-        if (meter.y + meter.height > canvas.height-100 || meter.y < 100) {
+        if (meter.y + meter.buttonHeight > canvas.height-meter.length || meter.y < meter.length) {
             meter.speed = -meter.speed;
         }
     }
@@ -47,7 +49,7 @@ export function updateAngleMeter() {
 
 // Mappa mätarens y-position till en vinkel mellan -90 och 90
 function mapToAngle(yPosition) {
-    let angle = ((yPosition / canvas.height) * 180) - 90; // Mappning från 0 till canvas.height till -90 till 90 grader
+    let angle = ((yPosition / canvas.height-meter.length) * 180) - 90; // Mappning från 0 till canvas.height till -90 till 90 grader
     return angle;
 }
 
@@ -61,7 +63,7 @@ document.addEventListener("keydown", function (event) {
 });
 
 export function resetAngleMeter(){
-    meter.y = canvas.height - 150; // Återställ y-positionen
+    meter.y = canvas.height /2 //återsätt y axeln
     meter.isMoving = true; // Starta mätaren igen
     shootAngle = 0; // Återställ vinkeln
 }
