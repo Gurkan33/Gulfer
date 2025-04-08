@@ -6,7 +6,7 @@ canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
 import { course_levels } from "./course.js";
-import { shootAngle, resetAngleMeter } from "./angleMeter.js";
+import { shootAngle, resetAngleMeter, drawArrow, angle} from "./angleMeter.js";
 import { shootSpeed, resetSpeedMeter } from "./speedmeter.js";
 
 export let level = 1;
@@ -27,6 +27,11 @@ ballImg.src = "assets/golfball.png";
 
 export function drawBall() {
     ctx.drawImage(ballImg, ball.x - (ballImg.width / 2), ball.y - (ballImg.height / 2));
+
+    if(ball.directionX === 0 && ball.directionY === 0){ //visar rotationspilen om bollens hastighet är 0
+        drawArrow(ball.x, ball.y, angle);
+    }
+
 }
 
 export function moveBall() {
@@ -54,9 +59,8 @@ export function moveBall() {
 }
 
 export function shootBall() {
-    let angleInRadians = shootAngle * (Math.PI / 180);
-    ball.directionX = Math.cos(angleInRadians) * shootSpeed;
-    ball.directionY = Math.sin(angleInRadians) * shootSpeed;
+    ball.directionX = Math.cos(shootAngle) * shootSpeed;
+    ball.directionY = Math.sin(shootAngle) * shootSpeed;
     resetSpeedMeter();
     resetAngleMeter();
 }

@@ -1,9 +1,11 @@
 const canvas = document.getElementById("gameCanvas");
 const ctx = canvas.getContext("2d");
 
-export let shootSpeed = 30; // Startvärde för hastigheten
+export let shootSpeed = 0; // Startvärde för hastigheten
 let increasing = true; // Om hastigheten ökar eller minskar
 let speedLocked = false; 
+
+let meterSpeed = 0.1 // ändrar hastigheten på själva mätaren
 
 export function drawSpeedMeter() {
     let meterWidth = 300;
@@ -29,13 +31,13 @@ export function drawSpeedMeter() {
 export function updateSpeedMeter() {
     if (speedLocked === false){
         if (increasing) {
-            shootSpeed += 1;
-            if (shootSpeed >= 100) {
+            shootSpeed += meterSpeed;
+            if (shootSpeed >= 20) {
                 increasing = false;
             }
         } else {
-            shootSpeed -= 1;
-            if (shootSpeed <= 10) {
+            shootSpeed -= meterSpeed;
+            if (shootSpeed <= 1) {
                 increasing = true;
             }
         }

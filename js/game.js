@@ -13,7 +13,7 @@ import {
 } from "./ball.js";
 
 import {
-    drawAngleMeter,
+    //drawAngleMeter,
     updateAngleMeter
 } from "./angleMeter.js";
 
@@ -37,7 +37,7 @@ function gameLoop() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     drawBall();
     drawObjects();
-    drawAngleMeter();
+    //drawAngleMeter();
     updateAngleMeter();
     drawSpeedMeter();
     updateSpeedMeter();
