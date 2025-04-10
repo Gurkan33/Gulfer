@@ -23,7 +23,7 @@ export let ball = {
 };
 
 let ballImg = new Image();
-ballImg.src = "assets/golfball.png";
+ballImg.src = "golfboll2_gulfer.png"; 
 
 export function drawBall() {
     ctx.drawImage(ballImg, ball.x - (ballImg.width / 2), ball.y - (ballImg.height / 2));
