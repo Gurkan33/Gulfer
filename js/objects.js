@@ -41,7 +41,8 @@ export let objects = [
     { x: 600, y: 750, radius: 150, hitbox: 'circle', color: 'red'},
     { x: 400, y: 300, width: 200, height: 20, hitbox: 'rectangle', color: 'blue',},
     { x: 700, y: 400, width: 750, height: 30, hitbox: 'rectangle', color: 'green', rotation: 60},
-    { x: 1400, y: 500, radius: 30, hitbox: 'circle', color: '', sprite: "assets/rock.png", offsetX: 200, offsety: 200, size:100 }
+    { x: 1400, y: 500, radius: 30, hitbox: 'circle', color: '', sprite: "assets/rock.png", offsetX: 200, offsety: 200, size:100 },
+    { x: 1000, y: 600, radius: 30, hitbox: 'circle', color: '', sprite: "assets/golfspelare.png", offsetX: 25, offsety: 10, size:100}
 ];
 
 export function drawObjects() {
