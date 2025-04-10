@@ -10,6 +10,7 @@ import {
     drawBall,
     moveBall,
     shootBall,
+    ballUpdate,
 } from "./ball.js";
 
 import {
@@ -36,8 +37,8 @@ canvas.addEventListener('click', shootBall);
 function gameLoop() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     drawBall();
+    ballUpdate();
     drawObjects();
-    //drawAngleMeter();
     updateAngleMeter();
     drawSpeedMeter();
     updateSpeedMeter();

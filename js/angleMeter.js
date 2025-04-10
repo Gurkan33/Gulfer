@@ -9,7 +9,7 @@ export let angle = 0;
 let spinning = true;
 export let shootAngle = null;
 
-export function drawArrow(x, y, angle) {
+export function drawArrow(x, y) {
     // x = bollens x värde
     // y = bollens y värde
     ctx.save();

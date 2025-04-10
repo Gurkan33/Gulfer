@@ -14,37 +14,49 @@ export let level = 1;
 export let ball = {
     x: course_levels[level].teeStartPosX,
     y: course_levels[level].teeStartPosY,
-    radius: 10,
-    shoot_speed: 50,
+    radius: 11,
     speed: 0,
+    speedFactor: 0,
     angle: 0,
     directionX: 0,
     directionY: 0,
+    onGreen: false ,
+    friction:0.975,
+    
 };
 
 let ballImg = new Image();
-ballImg.src = "golfboll2_gulfer.png"; 
+ballImg.src = "assets/golfboll2_gulfer.png"; 
 
 export function drawBall() {
-    ctx.drawImage(ballImg, ball.x - (ballImg.width / 2), ball.y - (ballImg.height / 2));
+    ctx.drawImage(ballImg, ball.x - (ballImg.width / 2), ball.y - (ballImg.height / 2),ballSize(),ballSize());
 
     if(ball.directionX === 0 && ball.directionY === 0){ //visar rotationspilen om bollens hastighet är 0
-        drawArrow(ball.x, ball.y, angle);
+        drawArrow(ball.x - (ballImg.width / 4), ball.y - (ballImg.height / 4));
     }
 
 }
 
+export function ballUpdate(){
+    
+    ball.speed = Math.sqrt(ball.directionX ** 2 + ball.directionY **2)
+
+    ball.speedFactor = Math.min(ball.speed / shootSpeed, 1)
+
+    return
+
+}
+
 export function moveBall() {
-    if (Math.abs(ball.directionX) < 0.01 && Math.abs(ball.directionY) < 0.01) {
+    if (Math.abs(ball.directionX) < 0.2 && Math.abs(ball.directionY) < 0.2) { //stoppar bollen om den är nära noll, så den inte fortsätter för alltid
         ball.directionX = 0;
         ball.directionY = 0;
         ball.speed = 0;
         return;
     }
 
-    let friction = 0.9875;
-    ball.directionX *= friction;
-    ball.directionY *= friction;
+    ball.directionX *= ball.friction;
+    ball.directionY *= ball.friction;
 
     ball.x += ball.directionX;
     ball.y += ball.directionY;
@@ -70,3 +82,13 @@ document.addEventListener("keydown", function (event) {
         shootBall();
     }
 });
+
+function ballSize(){
+    let baseSize = ball.radius * 2;
+
+    // Lägg till extra storlek beroende på hastighet (ju snabbare, desto större)
+    let maxExtraSize = 22; // max hur mycket bollen kan växa
+    let dynamicSize = baseSize + maxExtraSize * ball.speedFactor;
+
+    return dynamicSize;
+}
