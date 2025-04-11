@@ -38,7 +38,7 @@ export function drawBall() {
     ctx.drawImage(ballImg, ball.x - size / 2, ball.y - size / 2, size, size);
 
     if (ball.directionX === 0 && ball.directionY === 0) {
-        drawArrow(ball.x , ball.y);
+        drawArrow(ball.x, ball.y);
     }
 }
 
@@ -61,6 +61,9 @@ export function moveBall() {
     ball.x += ball.directionX;
     ball.y += ball.directionY;
 
+    console.log(ball.x)
+    //console.log(ball.y)
+
     const size = ballSize();
     const halfSize = size / 2;
 
@@ -81,12 +84,7 @@ export function shootBall() {
 
     const ljud = document.getElementById("ljud");
 
-    // Lyssna på hela dokumentet för tangenttryck
-    document.addEventListener("keydown", function(event) {
-    if (event.key === " ") {
         ljud.play(); // Spela upp ljudet
-    }
-    });
 }
 
 document.addEventListener("keydown", function (event) {

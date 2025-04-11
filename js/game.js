@@ -33,8 +33,8 @@ import {
 } from "./collision.js";
 
 import {
-    update,
-    draw,
+    updatePlayer,
+    drawPlayer,
 } from "./player.js";
 
 
@@ -50,8 +50,8 @@ function gameLoop() {
     updateSpeedMeter();
     moveBall();
     detectCollision(ball, objects);
-    update();
-    draw();
+    updatePlayer();
+    drawPlayer();
     requestAnimationFrame(gameLoop);
 
 }

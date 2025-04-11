@@ -15,6 +15,10 @@ body {
     border-radius: 20px; /* Rundade hörn */
     border: 5px solid #333; /* Mörkgrå ram */
     display: block;
+    z-index: -1;
+}
+.background{
+    z-index: 1;
 }
 
 canvas {
