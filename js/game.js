@@ -32,6 +32,12 @@ import {
     detectCollision
 } from "./collision.js";
 
+import {
+    update,
+    draw,
+} from "./player.js";
+
+
 canvas.addEventListener('click', shootBall);
 
 function gameLoop() {
@@ -44,7 +50,10 @@ function gameLoop() {
     updateSpeedMeter();
     moveBall();
     detectCollision(ball, objects);
+    update();
+    draw();
     requestAnimationFrame(gameLoop);
+
 }
 
 gameLoop();

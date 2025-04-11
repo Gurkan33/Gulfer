@@ -1,4 +1,3 @@
-
 const canvas = document.getElementById('gameCanvas');
 const ctx = canvas.getContext('2d');
 
@@ -6,7 +5,7 @@ canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
 import { course_levels } from "./course.js";
-import { shootAngle, resetAngleMeter, drawArrow, angle} from "./angleMeter.js";
+import { shootAngle, resetAngleMeter, drawArrow, angle } from "./angleMeter.js";
 import { shootSpeed, resetSpeedMeter } from "./speedmeter.js";
 
 export let level = 1;
@@ -20,35 +19,36 @@ export let ball = {
     angle: 0,
     directionX: 0,
     directionY: 0,
-    onGreen: false ,
-    friction:0.975,
-    
+    onGreen: false,
+    friction: 0.975,
 };
 
 let ballImg = new Image();
-ballImg.src = "assets/golfboll2_gulfer.png"; 
+ballImg.src = "assets/golfboll2_gulfer.png";
 
-export function drawBall() {
-    ctx.drawImage(ballImg, ball.x - (ballImg.width / 2), ball.y - (ballImg.height / 2),ballSize(),ballSize());
-
-    if(ball.directionX === 0 && ball.directionY === 0){ //visar rotationspilen om bollens hastighet är 0
-        drawArrow(ball.x - (ballImg.width / 4), ball.y - (ballImg.height / 4));
-    }
-
+function ballSize() {
+    let baseSize = ball.radius * 2;
+    let maxExtraSize = 22; // max hur mycket bollen kan växa
+    let dynamicSize = baseSize + maxExtraSize * ball.speedFactor;
+    return dynamicSize;
 }
 
-export function ballUpdate(){
-    
-    ball.speed = Math.sqrt(ball.directionX ** 2 + ball.directionY **2)
+export function drawBall() {
+    const size = ballSize();
+    ctx.drawImage(ballImg, ball.x - size / 2, ball.y - size / 2, size, size);
 
-    ball.speedFactor = Math.min(ball.speed / shootSpeed, 1)
+    if (ball.directionX === 0 && ball.directionY === 0) {
+        drawArrow(ball.x , ball.y);
+    }
+}
 
-    return
-
+export function ballUpdate() {
+    ball.speed = Math.sqrt(ball.directionX ** 2 + ball.directionY ** 2);
+    ball.speedFactor = Math.min(ball.speed / shootSpeed, 1);
 }
 
 export function moveBall() {
-    if (Math.abs(ball.directionX) < 0.2 && Math.abs(ball.directionY) < 0.2) { //stoppar bollen om den är nära noll, så den inte fortsätter för alltid
+    if (Math.abs(ball.directionX) < 0.2 && Math.abs(ball.directionY) < 0.2) {
         ball.directionX = 0;
         ball.directionY = 0;
         ball.speed = 0;
@@ -61,11 +61,14 @@ export function moveBall() {
     ball.x += ball.directionX;
     ball.y += ball.directionY;
 
-    if (ball.x + ball.radius > canvas.width || ball.x - ball.radius < 0) {
+    const size = ballSize();
+    const halfSize = size / 2;
+
+    if (ball.x + halfSize > canvas.width || ball.x - halfSize < 0) {
         ball.directionX = -ball.directionX;
     }
 
-    if (ball.y + ball.radius > canvas.height || ball.y - ball.radius < 0) {
+    if (ball.y + halfSize > canvas.height || ball.y - halfSize < 0) {
         ball.directionY = -ball.directionY;
     }
 }
@@ -75,6 +78,15 @@ export function shootBall() {
     ball.directionY = Math.sin(shootAngle) * shootSpeed;
     resetSpeedMeter();
     resetAngleMeter();
+
+    const ljud = document.getElementById("ljud");
+
+    // Lyssna på hela dokumentet för tangenttryck
+    document.addEventListener("keydown", function(event) {
+    if (event.key === " ") {
+        ljud.play(); // Spela upp ljudet
+    }
+    });
 }
 
 document.addEventListener("keydown", function (event) {
@@ -82,13 +94,3 @@ document.addEventListener("keydown", function (event) {
         shootBall();
     }
 });
-
-function ballSize(){
-    let baseSize = ball.radius * 2;
-
-    // Lägg till extra storlek beroende på hastighet (ju snabbare, desto större)
-    let maxExtraSize = 22; // max hur mycket bollen kan växa
-    let dynamicSize = baseSize + maxExtraSize * ball.speedFactor;
-
-    return dynamicSize;
-}
