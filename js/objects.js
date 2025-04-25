@@ -54,6 +54,9 @@ export let objects = [
     { x: 295, y: 185, width: 400, height: 137, hitbox: 'rectangle', color: 'blue', rotation: +12, type:"water"},
     { x: 390, y: 179, width: 200, height: 137, hitbox: 'rectangle', color: 'blue', rotation: +8, type:"water"},
     { x: 900, y: 400, radius: 245, hitbox: 'circle', color: 'blue', type:"water"},
+
+    //hole:
+    {x:1650, y:475, radius:10, hitbox: "circle", color:"black", type:"hole"}
 ];
 
 export function drawObjects() {
@@ -66,7 +69,7 @@ export function drawObjects() {
                 ctx.fillStyle = "rgba(255, 255, 0, 0.5)";
             }
             else if (obj.type === "hole") {
-                ctx.fillStyle = "rgba(0, 0, 0, 0.5)";
+                ctx.fillStyle = "rgba(0, 0, 0, 1)";
             } 
             else {
                 ctx.fillStyle = obj.color;
