@@ -55,6 +55,9 @@ export let objects = [
     { x: 390, y: 179, width: 200, height: 137, hitbox: 'rectangle', color: 'blue', rotation: +8, type:"water"},
     { x: 900, y: 400, radius: 245, hitbox: 'circle', color: 'blue', type:"water"},
 
+    //sand
+    { x: 1600, y: 600, radius: 30, hitbox: 'circle', color: 'yellow', type:"sand"},
+    { x: 500, y: 600, radius: 100, hitbox: 'circle', color: 'yellow', type:"sand"},
     //hole:
     {x:1650, y:475, radius:10, hitbox: "circle", color:"black", type:"hole"}
 ];
