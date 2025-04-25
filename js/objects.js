@@ -11,6 +11,7 @@ canvas.height = window.innerHeight;
 
     x: position i x led för objektet, placerat från centrum;
     y: position i y led för objektet, placerat från centrum;
+    Height: höjd på objektet
 
     hitbox: typen av hitbox, "circle" eller "rectangle";
         Om (hitbox === "circle"){
@@ -39,16 +40,37 @@ canvas.height = window.innerHeight;
 export let objects = [ 
     { x: 100, y: 300, radius: 30, hitbox: 'circle', color: 'red'},
     { x: 600, y: 750, radius: 150, hitbox: 'circle', color: 'red'},
-    { x: 400, y: 300, width: 200, height: 20, hitbox: 'rectangle', color: 'blue',},
-    { x: 700, y: 400, width: 750, height: 30, hitbox: 'rectangle', color: 'green', rotation: 60},
+    { x: 1600, y: 400, width: 200, height: 30, hitbox: 'rectangle', color: 'green', rotation: 60},
     { x: 1400, y: 500, radius: 30, hitbox: 'circle', color: '', sprite: "assets/rock.png", offsetX: 200, offsety: 200, size:100 },
-    { x: 1000, y: 600, radius: 30, hitbox: 'circle', color: '', sprite: "assets/golfspelare.png", offsetX: 25, offsety: 10, size:100}
+    { x: 1000, y: 600, radius: 30, hitbox: 'circle', color: '', sprite: "assets/golfspelare.png", offsetX: 25, offsety: 10, size:100},
+
+    //water:
+    { x: 270, y: 200, radius: 80, hitbox: 'circle', color: 'blue', type:"water"},
+    { x: 1480, y: 260, radius: 115, hitbox: 'circle', color: 'blue', type:"water"},
+    { x: 700, y: 172.5, width: 350, height: 400, hitbox: 'rectangle', color: 'blue', rotation: -4, type:"water"},
+    { x: 250, y: 202, radius: 70, hitbox: 'circle', color: 'blue', type:"water"},
+    { x: 228, y: 204, radius: 52, hitbox: 'circle', color: 'blue', type:"water"},
+    { x: 285, y: 194, radius: 72, hitbox: 'circle', color: 'blue', type:"water"},
+    { x: 295, y: 185, width: 400, height: 137, hitbox: 'rectangle', color: 'blue', rotation: +12, type:"water"},
+    { x: 390, y: 179, width: 200, height: 137, hitbox: 'rectangle', color: 'blue', rotation: +8, type:"water"},
+    { x: 900, y: 400, radius: 245, hitbox: 'circle', color: 'blue', type:"water"},
 ];
 
 export function drawObjects() {
     objects.forEach(obj => {
         if (!obj.sprite) {
-            ctx.fillStyle = obj.color;
+
+            if (obj.type === "water") {
+                ctx.fillStyle = "rgba(0, 0, 255, 0.6)";
+            } else if (obj.type === "sand") {
+                ctx.fillStyle = "rgba(255, 255, 0, 0.5)";
+            }
+            else if (obj.type === "hole") {
+                ctx.fillStyle = "rgba(0, 0, 0, 0.5)";
+            } 
+            else {
+                ctx.fillStyle = obj.color;
+            }
 
             if (obj.hitbox === 'circle') {
                 ctx.beginPath();
@@ -69,7 +91,7 @@ export function drawObjects() {
             img.src = obj.sprite;
             ctx.drawImage(img, obj.x - (img.width / 2) + obj.offsetX, obj.y - (img.width / 2) + obj.offsety, obj.size, obj.size);
 
-            ctx.fillStyle = "rgba(195, 238, 5, 0.6)";
+            ctx.fillStyle = "rgba(195, 238, 5, 0.5)";
             if (obj.hitbox === 'circle') {
                 ctx.beginPath();
                 ctx.arc(obj.x, obj.y, obj.radius, 0, Math.PI * 2);

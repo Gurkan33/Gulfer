@@ -5,6 +5,11 @@ const ctx = canvas.getContext('2d');
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
+const backgroundImg = new Image();
+backgroundImg.src = "assets/golfbana2_gulfer.png";
+
+let gamePhase = "angle";
+
 import {
     ball,
     drawBall,
@@ -42,6 +47,7 @@ canvas.addEventListener('click', shootBall);
 
 function gameLoop() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.drawImage(backgroundImg, 0, 0, canvas.width, canvas.height);
     drawBall();
     ballUpdate();
     drawObjects();
@@ -55,5 +61,11 @@ function gameLoop() {
     requestAnimationFrame(gameLoop);
 
 }
+
+document.addEventListener("keydown", function (event) {
+    if (event.code === "Space") {
+        shootBall();
+    }
+});
 
 gameLoop();
