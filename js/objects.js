@@ -18,8 +18,6 @@ canvas.height = window.innerHeight;
             radius: radien på cirkeln;
         }
         Om (hitbox === "rectangle"){
-            width: bredd på hitbox
-            height: höjd på hitbox
             rotation: rotationen på rektangeln (grader)
         }
 
@@ -53,8 +51,8 @@ export let objects = [
     { x: 285, y: 194, radius: 72, hitbox: 'circle', color: 'blue', type:"water"},
     { x: 295, y: 185, width: 400, height: 137, hitbox: 'rectangle', color: 'blue', rotation: +12, type:"water"},
     { x: 390, y: 179, width: 200, height: 137, hitbox: 'rectangle', color: 'blue', rotation: +8, type:"water"},
-    { x: 900, y: 400, radius: 245, hitbox: 'circle', color: 'blue', type:"water"},
-
+    { x: 900, y: 400, radius: 242, hitbox: 'circle', color: 'blue', type:"water"},
+    { x: 85, y: 407, radius: 242, hitbox: 'circle', color: 'blue', type:"water"},
     //sand
     { x: 1600, y: 600, radius: 30, hitbox: 'circle', color: 'yellow', type:"sand"},
     { x: 500, y: 600, radius: 100, hitbox: 'circle', color: 'yellow', type:"sand"},

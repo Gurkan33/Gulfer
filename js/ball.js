@@ -7,6 +7,7 @@ canvas.height = window.innerHeight;
 import { course_levels } from "./course.js";
 import { shootAngle, resetAngleMeter, drawArrow, angle } from "./angleMeter.js";
 import { shootSpeed, resetSpeedMeter } from "./speedmeter.js";
+import { state } from "./gameState.js";
 
 export let level = 1;
 

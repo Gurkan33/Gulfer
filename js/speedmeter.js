@@ -1,6 +1,9 @@
 const canvas = document.getElementById("gameCanvas");
 const ctx = canvas.getContext("2d");
 
+import { state } from "./gameState.js";
+
+
 export let shootSpeed = 0; // Startvärde för hastigheten
 let increasing = true; // Om hastigheten ökar eller minskar
 let speedLocked = false; 
@@ -48,6 +51,7 @@ document.addEventListener("keydown", function(event){
     if (event.code === "Enter"){
         speedLocked = true; 
         console.log("Hastigheten låst!" + shootSpeed)
+        state.gamePhase = "angle"
     }
 });
 

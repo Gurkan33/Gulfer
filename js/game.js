@@ -8,7 +8,7 @@ canvas.height = window.innerHeight;
 const backgroundImg = new Image();
 backgroundImg.src = "assets/golfbana2_gulfer.png";
 
-let gamePhase = "angle";
+import { state } from "./gameState.js";
 
 import {
     ball,
@@ -42,29 +42,37 @@ import {
     drawPlayer,
 } from "./player.js";
 
-
 canvas.addEventListener('click', shootBall);
 
 function gameLoop() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     ctx.drawImage(backgroundImg, 0, 0, canvas.width, canvas.height);
+
     drawBall();
     ballUpdate();
     drawObjects();
-    updateAngleMeter();
-    drawSpeedMeter();
-    updateSpeedMeter();
+
+    if (state.gamePhase === "speed") {
+        drawSpeedMeter();
+        updateSpeedMeter();
+    } else if (state.gamePhase === "angle") {
+        updateAngleMeter();// Lägg till drawAngleMeter om du vill ha visuell indikator
+    }
+
     moveBall();
     detectCollision(ball, objects);
     updatePlayer();
     drawPlayer();
-    requestAnimationFrame(gameLoop);
 
+    requestAnimationFrame(gameLoop);
 }
 
 document.addEventListener("keydown", function (event) {
     if (event.code === "Space") {
-        shootBall();
+        if(state.gamePhase === "shot"){
+            shootBall();
+            state.gamePhase = "speed"
+        }
     }
 });
 

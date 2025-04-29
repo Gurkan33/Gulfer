@@ -4,6 +4,8 @@ const ctx = canvas.getContext('2d');
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
+import { state } from "./gameState.js";
+
 
 export let angle = 0;
 let spinning = true;
@@ -49,6 +51,7 @@ document.addEventListener("keydown", function(event){
             spinning = false;
             shootAngle = angle;
             console.log("Skjuter i riktning:", shootAngle.toFixed(2), "radianer");
+            state.gamePhase = "shot"
           }
     }
 });
