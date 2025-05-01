@@ -46,12 +46,12 @@ export function updateAngleMeter() {
 
 
 document.addEventListener("keydown", function(event){
-    if (event.code === "Enter"){
+    if (event.code === "Enter" && state.gamePhase === "angle"){
         if (spinning) {
             spinning = false;
             shootAngle = angle;
             console.log("Skjuter i riktning:", shootAngle.toFixed(2), "radianer");
-            state.gamePhase = "shot"
+            state.gamePhase = "speed"
           }
     }
 });

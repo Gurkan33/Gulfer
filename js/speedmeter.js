@@ -48,10 +48,10 @@ export function updateSpeedMeter() {
 }
 
 document.addEventListener("keydown", function(event){
-    if (event.code === "Enter"){
+    if (event.code === "Enter" && state.gamePhase === "speed"){
         speedLocked = true; 
         console.log("Hastigheten låst!" + shootSpeed)
-        state.gamePhase = "angle"
+        state.gamePhase = "shot"
     }
 });
 

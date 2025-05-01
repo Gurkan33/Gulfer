@@ -52,11 +52,11 @@ function gameLoop() {
     ballUpdate();
     drawObjects();
 
-    if (state.gamePhase === "speed") {
+    if (state.gamePhase === "angle") {
+        updateAngleMeter();// Lägg till drawAngleMeter om du vill ha visuell indikator
+    } else if (state.gamePhase === "speed") {
         drawSpeedMeter();
         updateSpeedMeter();
-    } else if (state.gamePhase === "angle") {
-        updateAngleMeter();// Lägg till drawAngleMeter om du vill ha visuell indikator
     }
 
     moveBall();
@@ -68,11 +68,10 @@ function gameLoop() {
 }
 
 document.addEventListener("keydown", function (event) {
-    if (event.code === "Space") {
-        if(state.gamePhase === "shot"){
+    if (event.code === "Space" && state.gamePhase === "shot") {
             shootBall();
-            state.gamePhase = "speed"
-        }
+            state.gamePhase = "angle"
+
     }
 });
 
