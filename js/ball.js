@@ -22,12 +22,17 @@ export let ball = {
     angle: 0,
     directionX: 0,
     directionY: 0,
-    onGreen: false,
     friction: 0.975,         // Friktion på marken
     airFriction: 0.99,       // Friktion i luften
-    gravity: 0.4,            // Gravitation
-    isInAir: false,          // Om bollen är i luften
-    rotation: 0              // Nytt: vinkel för bollens snurr
+    gravity: 0.4,            // Gravitation   
+    rotation: 0,    // Nytt: vinkel för bollens snurr 
+    
+    isInAir: false,  // Om bollen är i luften
+    onGreen: false, // Om bollen är på greenen
+    inWater: false, // Om bollen är i vattnet
+    inHole: false, // Om bollen är i hålet
+    inBunker: false, // Om bollen är i bunkern
+
 };
 
 let ballImg = new Image();

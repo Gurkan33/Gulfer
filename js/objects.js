@@ -36,9 +36,6 @@ canvas.height = window.innerHeight;
 
 
 export let objects = [ 
-    { x: 100, y: 300, radius: 30, hitbox: 'circle', color: 'red'},
-    { x: 600, y: 750, radius: 150, hitbox: 'circle', color: 'red'},
-    { x: 1600, y: 400, width: 200, height: 30, hitbox: 'rectangle', color: 'green', rotation: 60},
     { x: 1400, y: 500, radius: 30, hitbox: 'circle', color: '', sprite: "assets/rock.png", offsetX: 200, offsety: 200, size:100 },
     { x: 1000, y: 600, radius: 30, hitbox: 'circle', color: '', sprite: "assets/golfspelare.png", offsetX: 25, offsety: 10, size:100},
 
@@ -52,7 +49,19 @@ export let objects = [
     { x: 295, y: 185, width: 400, height: 137, hitbox: 'rectangle', color: 'blue', rotation: +12, type:"water"},
     { x: 390, y: 179, width: 200, height: 137, hitbox: 'rectangle', color: 'blue', rotation: +8, type:"water"},
     { x: 900, y: 400, radius: 242, hitbox: 'circle', color: 'blue', type:"water"},
-    { x: 85, y: 407, radius: 242, hitbox: 'circle', color: 'blue', type:"water"},
+    { x: 865, y: 407, radius: 250, hitbox: 'circle', color: 'blue', type:"water"},
+    { x: 480, y: 370, width: 400, height: 137, hitbox: 'rectangle', color: 'blue', rotation: 47, type:"water"},
+    { x: 370, y: 280, width: 500, height: 137, hitbox: 'rectangle', color: 'blue', rotation: 30, type:"water"},
+    { x: 500, y: 185, width: 300, height: 137, hitbox: 'rectangle', color: 'blue', rotation: -2, type:"water"},
+    { x: 1045, y: 180, width: 300, height: 367, hitbox: 'rectangle', color: 'blue', rotation: -2, type:"water"},
+    { x: 1110, y: 360, radius: 207, hitbox: 'circle', color: 'blue', type:"water"},
+    { x: 940, y: 500, width: 250, height: 100, hitbox: 'rectangle', color: 'blue', rotation: -25, type:"water"},
+
+
+    //water 2:
+    { x: 1280, y: 725, width: 310, height: 120, hitbox: 'rectangle', color: 'blue', rotation: 0, type:"water"},
+    { x: 1235, y: 790, radius: 55, hitbox: 'circle', color: 'blue', type:"water"},
+
     //sand
     { x: 1600, y: 600, radius: 30, hitbox: 'circle', color: 'yellow', type:"sand"},
     { x: 500, y: 600, radius: 100, hitbox: 'circle', color: 'yellow', type:"sand"},

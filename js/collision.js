@@ -91,6 +91,9 @@ function handleRectangleCollision(ball, obj) {
   }
 }
 
+
+
+
 export function detectCollision(ball, objects) {
   objects.forEach((obj) => {
     // Endast hantera kollision om objektet är "collider" eller saknar type
@@ -104,14 +107,15 @@ export function detectCollision(ball, objects) {
 
     // Här kan du lägga till specialhantering
     if (obj.type === "water") {
+      ball.inWater = true;
     }
 
     if (obj.type === "sand") {
-      
+      ball.inBunker = true;
     }
 
     if (obj.type === "hole") {
-      // t.ex. "boll i hål"-event
+      ball.inHole = true;
     }
   });
 }

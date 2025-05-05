@@ -47,13 +47,13 @@ export function updateSpeedMeter() {
     }
 }
 
-document.addEventListener("keydown", function(event){
-    if (event.code === "Enter" && state.gamePhase === "speed"){
-        speedLocked = true; 
-        console.log("Hastigheten låst!" + shootSpeed)
-        state.gamePhase = "shot"
+
+export function chooseSpeed() {
+    if (speedLocked === false) {
+        speedLocked = true; // Lås hastigheten
+        console.log("Skjuter med hastighet:", shootSpeed.toFixed(2));
     }
-});
+}
 
 export function resetSpeedMeter(){
     speedLocked = false;

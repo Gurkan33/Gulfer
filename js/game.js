@@ -1,4 +1,3 @@
-
 const canvas = document.getElementById('gameCanvas');
 const ctx = canvas.getContext('2d');
 
@@ -20,12 +19,14 @@ import {
 
 import {
     //drawAngleMeter,
-    updateAngleMeter
+    updateAngleMeter,
+    chooseAngle,
 } from "./angleMeter.js";
 
 import {
     drawSpeedMeter,
-    updateSpeedMeter
+    updateSpeedMeter,
+    chooseSpeed,
 } from "./speedmeter.js";
 
 import {
@@ -42,7 +43,7 @@ import {
     drawPlayer,
 } from "./player.js";
 
-canvas.addEventListener('click', shootBall);
+//canvas.addEventListener('click', shootBall);
 
 function gameLoop() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -51,27 +52,45 @@ function gameLoop() {
     drawBall();
     ballUpdate();
     drawObjects();
-
-    if (state.gamePhase === "angle") {
-        updateAngleMeter();// Lägg till drawAngleMeter om du vill ha visuell indikator
-    } else if (state.gamePhase === "speed") {
-        drawSpeedMeter();
-        updateSpeedMeter();
-    }
-
+    drawSpeedMeter();
     moveBall();
     detectCollision(ball, objects);
     updatePlayer();
     drawPlayer();
 
+    console.log("Current phase:", state.gamePhase); // Debug
+
+    if (state.gamePhase === "angle") {
+        updateAngleMeter();// Lägg till drawAngleMeter om du vill ha visuell indikator
+    } else if (state.gamePhase === "speed") {
+        console.log("hastighet"); // Debug
+        updateSpeedMeter();
+    }
+
+
     requestAnimationFrame(gameLoop);
 }
 
-document.addEventListener("keydown", function (event) {
-    if (event.code === "Space" && state.gamePhase === "shot") {
-            shootBall();
-            state.gamePhase = "angle"
+let spacePressed = false; // Flagga för att spåra om Enter redan tryckts
 
+document.addEventListener("keydown", function (event) {
+    if (event.code === "Space" && !spacePressed) {
+        spacePressed = true; // Blockera ytterligare aktiveringar
+
+        if (state.gamePhase === "angle") {
+            chooseAngle();
+            state.gamePhase = "speed";
+        } else if (state.gamePhase === "speed") {
+            chooseSpeed();
+            state.gamePhase = "shot";
+        }else if (state.gamePhase === "shot") {
+            shootBall();
+            state.gamePhase = "angle";
+        }
+
+        setTimeout(() => {
+            spacePressed = false; 
+        }, 50); 
     }
 });
 
