@@ -1,3 +1,8 @@
+@font-face {
+    font-family: 'MinFont';
+    src: url('../fonts/ARCADECLASSIC.TTF') format('truetype');
+}
+
 body {
     display: flex;
     justify-content: center;
@@ -36,7 +41,7 @@ canvas {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    font-family: sans-serif;
+    font-family: 'MinFont';
     z-index: 10;
 }
 
