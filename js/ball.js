@@ -76,7 +76,7 @@ export function ballUpdate() {
 
 export function moveBall() {
     if (Math.abs(ball.directionX) < 0.2 && Math.abs(ball.directionY) < 0.2 && ball.z <= 0) {
-        
+
         ball.directionX = 0;
         ball.directionY = 0;
         ball.speed = 0;
