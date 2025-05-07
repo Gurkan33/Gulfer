@@ -45,6 +45,12 @@ import {
 
 //canvas.addEventListener('click', shootBall);
 
+function drawScore() {
+    ctx.font = "32px Arial";
+    ctx.fillStyle = "white";
+    ctx.fillText("Slag: " + state.strokeCount, 30, 50);
+}
+
 function gameLoop() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     ctx.drawImage(backgroundImg, 0, 0, canvas.width, canvas.height);
@@ -57,6 +63,7 @@ function gameLoop() {
     detectCollision(ball, objects);
     updatePlayer();
     drawPlayer();
+    drawScore();
 
     console.log("Current phase:", state.gamePhase); // Debug
 
@@ -71,11 +78,23 @@ function gameLoop() {
     requestAnimationFrame(gameLoop);
 }
 
-let spacePressed = false; // Flagga för att spåra om Enter redan tryckts
+let gameStarted = false;
+let spacePressed = false
+
+function startGame() {
+    startScreen.style.display = "none";
+    canvas.style.display = "block";
+    gameStarted = true;
+    gameLoop();
+}
 
 document.addEventListener("keydown", function (event) {
-    if (event.code === "Space" && !spacePressed) {
-        spacePressed = true; // Blockera ytterligare aktiveringar
+    if (!gameStarted && event.code === "Enter") {
+        startGame();
+    }
+
+    if (gameStarted && event.code === "Space" && !spacePressed) {
+        spacePressed = true;
 
         if (state.gamePhase === "angle") {
             chooseAngle();
@@ -83,15 +102,13 @@ document.addEventListener("keydown", function (event) {
         } else if (state.gamePhase === "speed") {
             chooseSpeed();
             state.gamePhase = "shot";
-        }else if (state.gamePhase === "shot") {
+        } else if (state.gamePhase === "shot") {
             shootBall();
             state.gamePhase = "angle";
         }
 
         setTimeout(() => {
-            spacePressed = false; 
-        }, 50); 
+            spacePressed = false;
+        }, 50);
     }
 });
-
-gameLoop();

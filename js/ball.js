@@ -73,14 +73,18 @@ export function ballUpdate() {
     ball.speedFactor = Math.min(ball.speed / shootSpeed, 1);
 }
 
+
 export function moveBall() {
     if (Math.abs(ball.directionX) < 0.2 && Math.abs(ball.directionY) < 0.2 && ball.z <= 0) {
+        
         ball.directionX = 0;
         ball.directionY = 0;
         ball.speed = 0;
         ball.z = 0;
         ball.zSpeed = 0;
+        
         return;
+        
     }
 
     // Välj friktion baserat på om bollen är i luften
@@ -127,6 +131,8 @@ export function shootBall() {
     ball.z = 0;
     ball.zSpeed = shootSpeed * 0.4; // Uppåthastighet med liten variation
     ball.isInAir = true;
+
+    state.strokeCount++
 
     resetSpeedMeter();
     resetAngleMeter();

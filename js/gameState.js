@@ -1,3 +1,4 @@
 export const state = {
-    gamePhase: "angle"
+    gamePhase: "angle",
+    strokeCount: 0
 };
