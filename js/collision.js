@@ -1,4 +1,8 @@
-import { ball } from "./ball.js";
+import { 
+  ball, 
+  ballInWater
+} from "./ball.js";
+import { canvas,ctx, } from "./game.js";
 
 // Funktion som kollar om bollen träffar en roterad rektangel
 function isBallCollidingWithRotatedRect(ball, rect) {
@@ -120,11 +124,12 @@ export function detectCollision(ball, objects) {
         } else if (obj.hitbox === "rectangle") {
           handleRectangleCollision(ball, obj);
         }
-      } else if (obj.type === "water") {
+      } else if (obj.type === "water" && !ball.isInAir) {
         ball.inWater = true;
-      } else if (obj.type === "sand") {
+        ballInWater()
+      } else if (obj.type === "sand" && !ball.isInAir) {
         ball.inBunker = true;
-      } else if (obj.type === "hole") {
+      } else if (obj.type === "hole" && !ball.isInAir) {
         ball.inHole = true;
       }
     } else {

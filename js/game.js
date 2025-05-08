@@ -1,5 +1,5 @@
-const canvas = document.getElementById('gameCanvas');
-const ctx = canvas.getContext('2d');
+export const canvas = document.getElementById('gameCanvas');
+export const ctx = canvas.getContext('2d');
 
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
@@ -15,13 +15,14 @@ import {
     moveBall,
     shootBall,
     ballUpdate,
-    ballInWater,
 } from "./ball.js";
 
 import {
     //drawAngleMeter,
     updateAngleMeter,
     chooseAngle,
+    resetAngleMeter,
+    drawArrow,
 } from "./angleMeter.js";
 
 import {
@@ -55,9 +56,6 @@ function drawScore() {
 function gameLoop() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     ctx.drawImage(backgroundImg, 0, 0, canvas.width, canvas.height);
-    if(ball.inWater === true){
-        ballInWater()
-    }
 
     drawBall();
     ballUpdate();
@@ -69,15 +67,15 @@ function gameLoop() {
     drawPlayer();
     drawScore();
 
-    console.log("Current phase:", state.gamePhase); // Debug
+    if (ball.directionX === 0 && ball.directionY === 0) {
+        drawArrow(ball.x, ball.y);
+    }
 
     if (state.gamePhase === "angle") {
         updateAngleMeter();// Lägg till drawAngleMeter om du vill ha visuell indikator
     } else if (state.gamePhase === "speed") {
-        console.log("hastighet"); // Debug
         updateSpeedMeter();
     }
-
 
     requestAnimationFrame(gameLoop);
 }
@@ -102,6 +100,7 @@ document.addEventListener("keydown", function (event) {
 
         if (state.gamePhase === "angle") {
             chooseAngle();
+            resetAngleMeter();
             state.gamePhase = "speed";
         } else if (state.gamePhase === "speed") {
             chooseSpeed();

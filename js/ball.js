@@ -1,15 +1,9 @@
-const canvas = document.getElementById('gameCanvas');
-const ctx = canvas.getContext('2d');
-
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
-
 import { course_levels } from "./course.js";
 import { shootAngle, resetAngleMeter, drawArrow, angle } from "./angleMeter.js";
 import { shootSpeed, resetSpeedMeter } from "./speedmeter.js";
 import { state } from "./gameState.js";
-
-export let level = 1;
+import{level} from "./course.js";
+import { canvas,ctx, } from "./game.js";
 
 let ballImg = new Image();
 ballImg.src = "assets/golfboll2_gulfer.png";
@@ -21,7 +15,7 @@ export let ball = {
     y: course_levels[level].teeStartPosY,
     z: 0,   // Höjd över marken        
                       
-    zSpeed: 0,            // Vertikal hastighet
+    zSpeed: 0,            
     speed: 0,
     speedFactor: 0,
     angle: 0,
@@ -30,7 +24,7 @@ export let ball = {
 
 
     friction: 0.975,         // Friktion på marken
-    sandFriction: 0.9,      // Frik
+    sandFriction: 0.975,      // Friktion i bunkern
     airFriction: 0.985,       // Friktion i luften
     gravity: 0.4,            // Gravitation   
     rotation: 0,    // vinkel för bollens snurr 
@@ -42,6 +36,8 @@ export let ball = {
     inBunker: false, // Om bollen är i bunkern
 
 };
+
+export let lastBallPosition = { x: ball.x, y: ball.y }; // Variabel för att spara senaste positionen innan slaget
 
 function ballSize() {
     let baseSize = ball.radius * 2;
@@ -59,18 +55,10 @@ export function drawBall() {
     ctx.save();
     ctx.translate(ball.x, ball.y);
     ctx.rotate(ball.rotation);
-    ctx.drawImage(
-        ballImg,
-        -size / 2,
-        -size / 2,
-        size,
-        size
-    );
+    ctx.drawImage(ballImg, -size / 2, -size / 2, size, size);
     ctx.restore();
 
-    if (ball.directionX === 0 && ball.directionY === 0 && !ball.isInAir) {
-        drawArrow(ball.x, ball.y);
-    }
+    console.log("Bollen ritas");
 }
 
 export function ballUpdate() {
@@ -79,15 +67,18 @@ export function ballUpdate() {
 }
 
 export function ballInWater() {
+    ball.x = lastBallPosition.x;
+    ball.y = lastBallPosition.y;
 
-    if(ball.y>(canvas.height/2)){
-        ball.y +=10;
-    }else if(ball.y<(canvas.height/2)){
-        ball.y -=10;
-    }
 
+    ball.directionX = 0;
+    ball.directionY = 0;
+    ball.speed = 0;
+    ball.z = 0;
+    ball.zSpeed = 0;
+
+    state.gamePhase = "angle";
 }
-
 
 export function moveBall() {
     if (Math.abs(ball.directionX) < 0.2 && Math.abs(ball.directionY) < 0.2 && ball.z <= 0) {
@@ -102,7 +93,7 @@ export function moveBall() {
         
     }
 
-    // Välj friktion baserat på om bollen är i luften
+   
     let friction = ball.friction;
     
     if (ball.isInAir) {
@@ -147,6 +138,11 @@ export function moveBall() {
 }
 
 export function shootBall() {
+    // Spara bollens position innan slaget
+    lastBallPosition.x = ball.x;
+    lastBallPosition.y = ball.y;
+
+    // Beräkna bollens rörelse
     ball.directionX = Math.cos(shootAngle) * shootSpeed;
     ball.directionY = Math.sin(shootAngle) * shootSpeed;
 
@@ -154,7 +150,7 @@ export function shootBall() {
     ball.zSpeed = shootSpeed * 0.4; // Uppåthastighet med liten variation
     ball.isInAir = true;
 
-    state.strokeCount++
+    state.strokeCount++;
 
     resetSpeedMeter();
     resetAngleMeter();

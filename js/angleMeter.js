@@ -1,10 +1,5 @@
-const canvas = document.getElementById('gameCanvas');
-const ctx = canvas.getContext('2d');
-
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
-
 import { state } from "./gameState.js";
+import { canvas,ctx, } from "./game.js";
 
 
 export let angle = 0;
@@ -48,7 +43,6 @@ export function chooseAngle(){
     if (spinning) {
         spinning = false;
         shootAngle = angle;
-        console.log("Skjuter i riktning:", shootAngle.toFixed(2), "radianer");
       }
 }
 

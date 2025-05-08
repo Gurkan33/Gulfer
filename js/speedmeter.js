@@ -1,7 +1,5 @@
-const canvas = document.getElementById("gameCanvas");
-const ctx = canvas.getContext("2d");
-
 import { state } from "./gameState.js";
+import { canvas,ctx, } from "./game.js";
 
 
 export let shootSpeed = 0; // Startvärde för hastigheten
@@ -51,7 +49,6 @@ export function updateSpeedMeter() {
 export function chooseSpeed() {
     if (speedLocked === false) {
         speedLocked = true; // Lås hastigheten
-        console.log("Skjuter med hastighet:", shootSpeed.toFixed(2));
     }
 }
 
