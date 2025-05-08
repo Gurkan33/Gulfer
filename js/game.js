@@ -46,7 +46,7 @@ import {
 //canvas.addEventListener('click', shootBall);
 
 function drawScore() {
-    ctx.font = "32px Arial";
+    ctx.font = "32px MinFont";
     ctx.fillStyle = "white";
     ctx.fillText("Slag: " + state.strokeCount, 30, 50);
 }
