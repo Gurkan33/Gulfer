@@ -71,7 +71,8 @@ export function drawObjects() {
         if (!obj.sprite) {
 
             if (obj.type === "water") {
-                ctx.fillStyle = "rgba(0, 0, 255, 0.6)";
+                //ctx.fillStyle = "rgba(0, 0, 255, 0.6)";
+                ctx.fillStyle = "transparent";
             } else if (obj.type === "sand") {
                 ctx.fillStyle = "rgba(255, 255, 0, 0.5)";
             }

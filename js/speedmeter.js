@@ -5,6 +5,8 @@ import { canvas,ctx, } from "./game.js";
 export let shootSpeed = 0; // Startvärde för hastigheten
 let increasing = true; // Om hastigheten ökar eller minskar
 let speedLocked = false; 
+let maxSpeed = 20;
+let minSpeed = 1; // Minsta hastighet
 
 let meterSpeed = 0.1 // ändrar hastigheten på själva mätaren
 
@@ -33,12 +35,12 @@ export function updateSpeedMeter() {
     if (speedLocked === false){
         if (increasing) {
             shootSpeed += meterSpeed;
-            if (shootSpeed >= 20) {
+            if (shootSpeed >= maxSpeed) {
                 increasing = false;
             }
         } else {
             shootSpeed -= meterSpeed;
-            if (shootSpeed <= 1) {
+            if (shootSpeed <= minSpeed) {
                 increasing = true;
             }
         }
@@ -54,5 +56,5 @@ export function chooseSpeed() {
 
 export function resetSpeedMeter(){
     speedLocked = false;
-    shootSpeed = 30;
+    shootSpeed = Math.random() * (maxSpeed - minSpeed) + minSpeed;
 }
