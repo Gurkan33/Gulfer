@@ -15,6 +15,7 @@ import {
     moveBall,
     shootBall,
     ballUpdate,
+    ballInWater,
 } from "./ball.js";
 
 import {
@@ -54,6 +55,9 @@ function drawScore() {
 function gameLoop() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     ctx.drawImage(backgroundImg, 0, 0, canvas.width, canvas.height);
+    if(ball.inWater === true){
+        ballInWater()
+    }
 
     drawBall();
     ballUpdate();

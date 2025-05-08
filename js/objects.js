@@ -38,6 +38,7 @@ canvas.height = window.innerHeight;
 export let objects = [ 
     { x: 1400, y: 500, radius: 30, hitbox: 'circle', color: '', sprite: "assets/rock.png", offsetX: 200, offsety: 200, size:100 },
     { x: 1000, y: 600, radius: 30, hitbox: 'circle', color: '', sprite: "assets/golfspelare.png", offsetX: 25, offsety: 10, size:100},
+    { x: 500, y: 700, radius: 115, hitbox: 'circle', color: 'red', type:"collider"},
 
     //water:
     { x: 270, y: 200, radius: 80, hitbox: 'circle', color: 'blue', type:"water"},

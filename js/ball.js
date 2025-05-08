@@ -11,21 +11,29 @@ import { state } from "./gameState.js";
 
 export let level = 1;
 
+let ballImg = new Image();
+ballImg.src = "assets/golfboll2_gulfer.png";
+
 export let ball = {
+    radius: 11, 
+
     x: course_levels[level].teeStartPosX,
     y: course_levels[level].teeStartPosY,
-    z: 0,                    // Höjd över marken
-    zSpeed: 0,               // Vertikal hastighet
-    radius: 11,
+    z: 0,   // Höjd över marken        
+                      
+    zSpeed: 0,            // Vertikal hastighet
     speed: 0,
     speedFactor: 0,
     angle: 0,
     directionX: 0,
     directionY: 0,
+
+
     friction: 0.975,         // Friktion på marken
-    airFriction: 0.99,       // Friktion i luften
+    sandFriction: 0.9,      // Frik
+    airFriction: 0.985,       // Friktion i luften
     gravity: 0.4,            // Gravitation   
-    rotation: 0,    // Nytt: vinkel för bollens snurr 
+    rotation: 0,    // vinkel för bollens snurr 
     
     isInAir: false,  // Om bollen är i luften
     onGreen: false, // Om bollen är på greenen
@@ -34,9 +42,6 @@ export let ball = {
     inBunker: false, // Om bollen är i bunkern
 
 };
-
-let ballImg = new Image();
-ballImg.src = "assets/golfboll2_gulfer.png";
 
 function ballSize() {
     let baseSize = ball.radius * 2;
@@ -73,6 +78,16 @@ export function ballUpdate() {
     ball.speedFactor = Math.min(ball.speed / shootSpeed, 1);
 }
 
+export function ballInWater() {
+
+    if(ball.y>(canvas.height/2)){
+        ball.y +=10;
+    }else if(ball.y<(canvas.height/2)){
+        ball.y -=10;
+    }
+
+}
+
 
 export function moveBall() {
     if (Math.abs(ball.directionX) < 0.2 && Math.abs(ball.directionY) < 0.2 && ball.z <= 0) {
@@ -88,7 +103,14 @@ export function moveBall() {
     }
 
     // Välj friktion baserat på om bollen är i luften
-    const friction = ball.isInAir ? ball.airFriction : ball.friction;
+    let friction = ball.friction;
+    
+    if (ball.isInAir) {
+        friction = ball.airFriction;
+    } else if (ball.inBunker) {
+        friction = ball.sandFriction; }// Lägre friktion i bunkern
+
+    
 
     ball.directionX *= friction;
     ball.directionY *= friction;

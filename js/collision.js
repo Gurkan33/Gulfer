@@ -91,31 +91,51 @@ function handleRectangleCollision(ball, obj) {
   }
 }
 
-
-
-
 export function detectCollision(ball, objects) {
   objects.forEach((obj) => {
-    // Endast hantera kollision om objektet är "collider" eller saknar type
-    if (obj.type === "collider" || !obj.type) {
-      if (obj.hitbox === "circle") {
-        handleCircleCollision(ball, obj);
-      } else if (obj.hitbox === "rectangle") {
-        handleRectangleCollision(ball, obj);
+    let isInside = false;
+
+    // Kontrollera om bollen är inuti objektet baserat på hitbox-typ
+    if (obj.hitbox === "circle") {
+      const dx = ball.x - obj.x;
+      const dy = ball.y - obj.y;
+      const distance = Math.sqrt(dx * dx + dy * dy);
+      isInside = distance < ball.radius + obj.radius;
+    } else if (obj.hitbox === "rectangle") {
+      const withinX =
+        ball.x + ball.radius > obj.x &&
+        ball.x - ball.radius < obj.x + obj.width;
+      const withinY =
+        ball.y + ball.radius > obj.y &&
+        ball.y - ball.radius < obj.y + obj.height;
+      isInside = withinX && withinY;
+    }
+
+    // Om bollen är inuti objektet, hantera baserat på objektets typ
+    if (isInside) {
+      if (obj.type === "collider" || !obj.type) {
+        // Hantera studs för collider-objekt
+        if (obj.hitbox === "circle") {
+          handleCircleCollision(ball, obj);
+        } else if (obj.hitbox === "rectangle") {
+          handleRectangleCollision(ball, obj);
+        }
+      } else if (obj.type === "water") {
+        ball.inWater = true;
+      } else if (obj.type === "sand") {
+        ball.inBunker = true;
+      } else if (obj.type === "hole") {
+        ball.inHole = true;
       }
-    }
-
-    // Här kan du lägga till specialhantering
-    if (obj.type === "water") {
-      ball.inWater = true;
-    }
-
-    if (obj.type === "sand") {
-      ball.inBunker = true;
-    }
-
-    if (obj.type === "hole") {
-      ball.inHole = true;
+    } else {
+      // Om bollen inte är inuti objektet, återställ tillstånd
+      if (obj.type === "water") {
+        ball.inWater = false;
+      } else if (obj.type === "sand") {
+        ball.inBunker = false;
+      } else if (obj.type === "hole") {
+        ball.inHole = false;
+      }
     }
   });
 }
