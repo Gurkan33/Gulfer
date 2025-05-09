@@ -3,7 +3,7 @@ import { canvas,ctx, } from "./game.js";
 
 /*olika kommandon för objekten: 
 
-    type: "collider" - lämna även blank för collider, "water", "sand", "hole", (lägg till i collision.js)
+    type: "collider" - lämna även blank för collider, "water", "sand", "hole", "bush"(lägg till i collision.js)
 
     x: position i x led för objektet, placerat från centrum;
     y: position i y led för objektet, placerat från centrum;

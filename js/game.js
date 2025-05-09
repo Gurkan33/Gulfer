@@ -53,6 +53,23 @@ function drawScore() {
     ctx.fillText("Slag: " + state.strokeCount, 30, 50);
 }
 
+function drawBallStatus() {
+    ctx.font = "32px MinFont";
+    ctx.fillStyle = "white";
+    let ballStatus = "On the course";
+
+    if (ball.inWater) {
+        ballStatus = "In water"
+    } else if (ball.inBunker) {
+        ballStatus = "In bunker"
+    } else if (ball.inBush){
+        ballStatus = "In bush"
+    }
+
+
+    ctx.fillText("Ball Status : " + ballStatus, 30, 80);
+}
+
 function gameLoop() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     ctx.drawImage(backgroundImg, 0, 0, canvas.width, canvas.height);
@@ -66,6 +83,7 @@ function gameLoop() {
     updatePlayer();
     drawPlayer();
     drawScore();
+    drawBallStatus();
 
     if (ball.directionX === 0 && ball.directionY === 0) {
         drawArrow(ball.x, ball.y);
