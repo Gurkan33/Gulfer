@@ -108,9 +108,11 @@ function startGame() {
     gameLoop();
 }
 
+startGame()
+
 document.addEventListener("keydown", function (event) {
     if (!gameStarted && event.code === "Enter") {
-        startGame();
+        // startGame();
     }
 
     if (gameStarted && event.code === "Space" && !spacePressed) {
