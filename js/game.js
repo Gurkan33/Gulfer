@@ -44,6 +44,7 @@ import {
     updatePlayer,
     drawPlayer,
 } from "./player.js";
+import { course_levels } from "./course.js";
 
 //canvas.addEventListener('click', shootBall);
 
@@ -97,6 +98,7 @@ function gameLoop() {
 
     requestAnimationFrame(gameLoop);
 }
+
 
 let gameStarted = false;
 let spacePressed = false
