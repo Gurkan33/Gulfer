@@ -84,8 +84,6 @@ export function ballInWater() {
 export function ballInHole() {
 
     console.log("Bollen är i hålet!");
-  // Spara antalet slag för den aktuella banan
-  saveStrokesForCourse(level);
 
   // Gå till nästa bana
   level += 1;
@@ -110,14 +108,8 @@ export function moveBall() {
     return;
   }
 
-<<<<<<< HEAD
-  let friction = ball.friction;
-=======
-    state.gamePhase = "angle";
 
-    vattenLjud.play(); // Spela upp ljudet
-}
->>>>>>> 007cbe5221ed37a75ffe6fbd9bc18769b1a59846
+  let friction = ball.friction;
 
   if (ball.isInAir) {
     friction = ball.airFriction;
@@ -180,11 +172,5 @@ export function shootBall() {
 
   resetSpeedMeter();
   resetAngleMeter();
-
-<<<<<<< HEAD
-  ljud.play(); // Spela upp ljudet
-=======
-    const ljud = document.getElementById("ljud");
     ljud.play(); // Spela upp ljudet
->>>>>>> 007cbe5221ed37a75ffe6fbd9bc18769b1a59846
 }
