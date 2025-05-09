@@ -66,6 +66,9 @@ export function ballUpdate() {
     ball.speedFactor = Math.min(ball.speed / shootSpeed, 1);
 }
 
+
+const vattenLjud = document.getElementById("vattenLjud");
+
 export function ballInWater() {
     ball.x = lastBallPosition.x;
     ball.y = lastBallPosition.y;
@@ -78,6 +81,8 @@ export function ballInWater() {
     ball.zSpeed = 0;
 
     state.gamePhase = "angle";
+
+    vattenLjud.play(); // Spela upp ljudet
 }
 
 export function moveBall() {
@@ -137,6 +142,8 @@ export function moveBall() {
     ball.rotation += rotationSpeed;
 }
 
+const ljud = document.getElementById("ljud");
+
 export function shootBall() {
     // Spara bollens position innan slaget
     lastBallPosition.x = ball.x;
@@ -155,7 +162,7 @@ export function shootBall() {
     resetSpeedMeter();
     resetAngleMeter();
 
-    const ljud = document.getElementById("ljud");
+
     ljud.play(); // Spela upp ljudet
 }
 
