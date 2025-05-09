@@ -63,6 +63,9 @@ export function ballUpdate() {
   ball.speedFactor = Math.min(ball.speed / shootSpeed, 1);
 }
 
+
+const vattenLjud = document.getElementById("vattenLjud");
+
 export function ballInWater() {
   ball.x = lastBallPosition.x;
   ball.y = lastBallPosition.y;
@@ -107,7 +110,14 @@ export function moveBall() {
     return;
   }
 
+<<<<<<< HEAD
   let friction = ball.friction;
+=======
+    state.gamePhase = "angle";
+
+    vattenLjud.play(); // Spela upp ljudet
+}
+>>>>>>> 007cbe5221ed37a75ffe6fbd9bc18769b1a59846
 
   if (ball.isInAir) {
     friction = ball.airFriction;
@@ -171,5 +181,10 @@ export function shootBall() {
   resetSpeedMeter();
   resetAngleMeter();
 
+<<<<<<< HEAD
   ljud.play(); // Spela upp ljudet
+=======
+    const ljud = document.getElementById("ljud");
+    ljud.play(); // Spela upp ljudet
+>>>>>>> 007cbe5221ed37a75ffe6fbd9bc18769b1a59846
 }
