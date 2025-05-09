@@ -2,8 +2,7 @@ import { course_levels } from "./course.js";
 import { shootAngle, resetAngleMeter, drawArrow, angle } from "./angleMeter.js";
 import { shootSpeed, resetSpeedMeter } from "./speedmeter.js";
 import { state, saveStrokesForCourse } from "./gameState.js";
-import { level } from "./course.js";
-import { canvas, ctx, } from "./game.js";
+import { canvas, ctx,} from "./game.js";
 
 let ballImg = new Image();
 ballImg.src = "assets/golfboll2_gulfer.png";
@@ -11,8 +10,8 @@ ballImg.src = "assets/golfboll2_gulfer.png";
 export let ball = {
   radius: 10,
 
-  x: course_levels[level].teeStartPosX,
-  y: course_levels[level].teeStartPosY,
+  x: course_levels[state.level].teeStartPosX,
+  y: course_levels[state.level].teeStartPosY,
   z: 0, // Höjd över marken
 
   zSpeed: 0,

@@ -5,7 +5,7 @@ canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
 const backgroundImg = new Image();
-backgroundImg.src = "assets/golfbana2_gulfer.png";
+
 
 import { state } from "./gameState.js";
 
@@ -73,7 +73,9 @@ function drawBallStatus() {
 
 function gameLoop() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
+    backgroundImg.src = course_levels[state.level].backgroundImg;
     ctx.drawImage(backgroundImg, 0, 0, canvas.width, canvas.height);
+
 
     drawBall();
     ballUpdate();
