@@ -131,6 +131,8 @@ export function detectCollision(ball, objects) {
         ball.inBunker = true;
       } else if (obj.type === "hole" && !ball.isInAir) {
         ball.inHole = true;
+      } else if (obj.type === "bush" && !ball.isInAir) {
+        ball.inBush = true;
       }
     } else {
       // Om bollen inte är inuti objektet, återställ tillstånd

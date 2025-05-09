@@ -24,7 +24,7 @@ export let ball = {
 
 
     friction: 0.975,         // Friktion på marken
-    sandFriction: 0.975,      // Friktion i bunkern
+    sandFriction: 0.9,      // Friktion i bunkern
     airFriction: 0.985,       // Friktion i luften
     gravity: 0.4,            // Gravitation   
     rotation: 0,    // vinkel för bollens snurr 
@@ -34,6 +34,7 @@ export let ball = {
     inWater: false, // Om bollen är i vattnet
     inHole: false, // Om bollen är i hålet
     inBunker: false, // Om bollen är i bunkern
+    inBush: false, // Om bollen är i buskarna
 
 };
 
@@ -57,8 +58,6 @@ export function drawBall() {
     ctx.rotate(ball.rotation);
     ctx.drawImage(ballImg, -size / 2, -size / 2, size, size);
     ctx.restore();
-
-    console.log("Bollen ritas");
 }
 
 export function ballUpdate() {
@@ -79,6 +78,8 @@ export function ballInWater() {
     ball.speed = 0;
     ball.z = 0;
     ball.zSpeed = 0;
+
+    //INGOLF FIXAR LJUD HÄR
 
     state.gamePhase = "angle";
 
@@ -162,7 +163,7 @@ export function shootBall() {
     resetSpeedMeter();
     resetAngleMeter();
 
-
+    const ljud = document.getElementById("ljud");
     ljud.play(); // Spela upp ljudet
 }
 
