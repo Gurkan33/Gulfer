@@ -64,7 +64,7 @@ export let objects = {
     { x: 1235, y: 790, radius: 55, hitbox: 'circle', color: 'blue', type:"water"},
 
     //sand
-    { x: 1600, y: 600, radius: 30, hitbox: 'circle', color: 'yellow', type:"sand"},
+    { x: 1600, y: 600, radius: 100, hitbox: 'circle', color: 'yellow', type:"sand"},
     { x: 500, y: 600, radius: 100, hitbox: 'circle', color: 'yellow', type:"sand"},
     //hole:
     {x:1650, y:475, radius:10, hitbox: "circle", color:"black", type:"hole"}
@@ -74,17 +74,17 @@ export let objects = {
         { x: 1400, y: 500, radius: 30, hitbox: 'circle', color: '', sprite: "assets/rock.png", offsetX: 200, offsety: 200, size:100 },
         { x: 1000, y: 600, radius: 30, hitbox: 'circle', color: '', sprite: "assets/golfspelare.png", offsetX: 25, offsety: 10, size:100},
         // { x: 500, y: 700, radius: 115, hitbox: 'circle', color: 'red', type:"collider"},
-        { x: 790, y: 310, radius: 60, hitbox: 'circle', color: 'yellow', type: 'sand'}, 
-        { x: 600, y: 310, radius: 40, hitbox: 'circle', color: 'yellow', type: 'sand'},
+        { x: 790, y: 310, radius: 60, hitbox: 'circle', color: 'yellow', type: "sand"}, 
+        { x: 600, y: 310, radius: 40, hitbox: 'circle', color: 'yellow', type: "sand'"},
         { x: 630, y: 250, width: 200, height: 90, hitbox: 'rectangle', color: 'blue', rotation: 0, type:"sand"},
-        { x: 550, y: 570, radius: 55, hitbox: 'circle', color: 'yellow', type: 'sand'},
-        { x: 755, y: 590, radius: 35, hitbox: 'circle', color: 'yellow', type: 'sand'},
+        { x: 550, y: 570, radius: 55, hitbox: 'circle', color: 'yellow', type: "sand"},
+        { x: 755, y: 590, radius: 35, hitbox: 'circle', color: 'yellow', type: "sand"},
         { x: 550, y: 530, width: 200, height: 90, hitbox: 'rectangle', color: 'blue', rotation: 0, type:"sand"},
         { x: 1425, y: 220, width: 200, height: 70, hitbox: 'rectangle', color: 'blue', rotation: -25, type:"sand"},
         { x: 1300, y: 590, width: 140, height: 60, hitbox: 'rectangle', color: 'blue', rotation: 10, type:"sand"},
-        { x: 1300, y: 610, radius: 30, hitbox: 'circle', color: 'yellow', type: 'sand'},
-        { x: 1430, y: 625, radius: 35, hitbox: 'circle', color: 'yellow', type: 'sand'},
-        { x: 1220, y: 275, radius: 30, hitbox: 'circle', color: 'yellow', type: 'water'},
+        { x: 1300, y: 610, radius: 30, hitbox: 'circle', color: 'yellow', type: "sand"},
+        { x: 1430, y: 625, radius: 35, hitbox: 'circle', color: 'yellow', type: "sand"},
+        { x: 1220, y: 275, radius: 30, hitbox: 'circle', color: 'yellow', type: "water"},
         { x: 1390, y: 200, radius: 30, hitbox: 'circle', color: 'yellow', type: 'water'},
         { x: 1230, y: 210, width: 160, height: 60, hitbox: 'rectangle', color: 'blue', rotation: -20, type:"water"},
         {x:1700, y:365, radius:10, hitbox: "circle", color:"black", type:"hole"}
@@ -173,10 +173,10 @@ export function drawObjects() {
 
             if (obj.type === "water") {
                 ctx.fillStyle = "rgba(0, 0, 255, 0.6)";
-                ctx.fillStyle = "transparent";
+                // ctx.fillStyle = "transparent";
             } else if (obj.type === "sand") {
                 ctx.fillStyle = "rgba(255, 255, 0, 0.5)";
-                ctx.fillStyle = "transparent";
+                // ctx.fillStyle = "transparent";
             }
             else if (obj.type === "hole") {
                 ctx.fillStyle = "rgba(0, 0, 0, 1)";
