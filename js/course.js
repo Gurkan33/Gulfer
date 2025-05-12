@@ -22,4 +22,35 @@ export const course_levels = {
         teeStartPosY: 500,
         backgroundImg: "assets/golfbana3_gulfer.png",
     },
+    4: {
+        teeStartPosX: 200,
+        teeStartPosY: 500,
+        backgroundImg: "assets/golfbana4_gulfer.png",
+    },
+    5: {
+        teeStartPosX: 200,
+        teeStartPosY: 500,
+        backgroundImg: "assets/golfbana5_gulfer.png",
+    },
+    6: {
+        teeStartPosX: 200,
+        teeStartPosY: 500,
+        backgroundImg: "assets/golfbana6_gulfer.png",
+    },
+    7: {
+        teeStartPosX: 200,
+        teeStartPosY: 500,
+        backgroundImg: "assets/golfbana7_gulfer.png",
+    },
+    8: {
+        teeStartPosX: 200,
+        teeStartPosY: 500,
+        backgroundImg: "assets/golfbana8_gulfer.png",
+    },
+    9: {
+        teeStartPosX: 200,
+        teeStartPosY: 500,
+        backgroundImg: "assets/golfbana9_gulfer.png",
+    },
+
 };

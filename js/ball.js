@@ -1,7 +1,7 @@
 import { course_levels } from "./course.js";
 import { shootAngle, resetAngleMeter, drawArrow, angle } from "./angleMeter.js";
 import { shootSpeed, resetSpeedMeter } from "./speedmeter.js";
-import { state, saveStrokesForCourse } from "./gameState.js";
+import { state, saveStrokesForCourse, getScoreText} from "./gameState.js";
 import { canvas, ctx,} from "./game.js";
 
 let ballImg = new Image();
@@ -85,9 +85,18 @@ export function ballInHole() {
     console.log("Bollen är i hålet!");
 
   // Gå till nästa bana
-  level += 1;
+  // level += 1;
 
   // Återställ antalet slag för nästa bana
+  // state.strokeCount = 0;
+
+  const scoreText = getScoreText(state.level);
+  
+  // Alternativ 1 – rita på canvas
+  ctx.fillStyle = "white";
+  ctx.font = "48px MinFont";
+  ctx.fillText(scoreText, canvas.width / 2 - 100, canvas.height / 2);
+  level += 1;
   state.strokeCount = 0;
 
 }

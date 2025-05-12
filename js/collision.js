@@ -116,6 +116,8 @@ export function detectCollision(ball, objects) {
       isInside = withinX && withinY;
     }
 
+  
+
     // Om bollen är inuti objektet, hantera baserat på objektets typ
     if (isInside) {
       if (obj.type === "collider" || !obj.type) {
