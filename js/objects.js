@@ -8,7 +8,7 @@ import {state} from "./gameState.js";
 
     x: position i x led för objektet, placerat från centrum;
     y: position i y led för objektet, placerat från centrum;
-    Height: höjd på objektet
+    z: höjd på hitbox
 
     hitbox: typen av hitbox, "circle" eller "rectangle";
         Om (hitbox === "circle"){
@@ -16,6 +16,8 @@ import {state} from "./gameState.js";
         }
         Om (hitbox === "rectangle"){
             rotation: rotationen på rektangeln (grader)
+            width: bredden på rektangeln;
+            height: höjden på rektangeln;
         }
 
     color: färg på FORMEN
@@ -72,6 +74,7 @@ export let objects = {
         { x: 1400, y: 500, radius: 30, hitbox: 'circle', color: '', sprite: "assets/rock.png", offsetX: 200, offsety: 200, size:100 },
         { x: 1000, y: 600, radius: 30, hitbox: 'circle', color: '', sprite: "assets/golfspelare.png", offsetX: 25, offsety: 10, size:100},
         { x: 500, y: 700, radius: 115, hitbox: 'circle', color: 'red', type:"collider"},
+        { x: 1000, y: 400, radius: 50, hitbox: 'circle', color: 'yellow', type: 'sand'}, 
     ],
     3:[
         
