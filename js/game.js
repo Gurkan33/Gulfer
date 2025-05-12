@@ -4,7 +4,7 @@ export const ctx = canvas.getContext('2d');
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
-const backgroundImg = new Image();
+let backgroundImg = new Image();
 
 
 import { state } from "./gameState.js";
@@ -34,6 +34,7 @@ import {
 import {
     objects,
     drawObjects,
+    
 } from "./objects.js";
 
 import {
@@ -47,6 +48,7 @@ import {
 import { course_levels } from "./course.js";
 
 //canvas.addEventListener('click', shootBall);
+
 
 function drawScore() {
     ctx.font = "32px MinFont";
@@ -71,6 +73,34 @@ function drawBallStatus() {
     ctx.fillText("Ball Status : " + ballStatus, 30, 80);
 }
 
+export function goToNextLevel() {
+  state.level++;
+
+  if (!course_levels[state.level]) {
+    console.log("Spelet är slut!");
+    return;
+  }
+
+  // Ladda ny bakgrund
+  backgroundImg.src = course_levels[state.level].backgroundImg;
+
+  // Återställ bollen
+  ball.x = course_levels[state.level].teeStartPosX;
+  ball.y = course_levels[state.level].teeStartPosY;
+  ball.directionX = 0;
+  ball.directionY = 0;
+  ball.z = 0;
+  ball.zSpeed = 0;
+  ball.inHole = false;
+  ball.inWater = false;
+  ball.inBunker = false;
+  ball.inBush = false;
+  ball.isInAir = false;
+
+  state.strokeCount = 0;
+  state.gamePhase = "angle";
+}
+
 function gameLoop() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     backgroundImg.src = course_levels[state.level].backgroundImg;
@@ -82,7 +112,7 @@ function gameLoop() {
     drawObjects();
     drawSpeedMeter();
     moveBall();
-    detectCollision(ball, objects);
+    detectCollision(ball, objects[state.level]);
     updatePlayer();
     drawPlayer();
     drawScore();

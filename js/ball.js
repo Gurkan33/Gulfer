@@ -2,7 +2,8 @@ import { course_levels } from "./course.js";
 import { shootAngle, resetAngleMeter, drawArrow, angle } from "./angleMeter.js";
 import { shootSpeed, resetSpeedMeter } from "./speedmeter.js";
 import { state, saveStrokesForCourse, getScoreText} from "./gameState.js";
-import { canvas, ctx,} from "./game.js";
+import { canvas, ctx, goToNextLevel} from "./game.js";
+
 
 let ballImg = new Image();
 ballImg.src = "assets/golfboll2_gulfer.png";
@@ -81,24 +82,23 @@ export function ballInWater() {
 }
 
 export function ballInHole() {
-
-    console.log("Bollen är i hålet!");
-
-  // Gå till nästa bana
-  // level += 1;
-
-  // Återställ antalet slag för nästa bana
-  // state.strokeCount = 0;
+  console.log("Bollen är i hålet!");
 
   const scoreText = getScoreText(state.level);
-  
-  // Alternativ 1 – rita på canvas
+
+  // Rita poängen
   ctx.fillStyle = "white";
   ctx.font = "48px MinFont";
   ctx.fillText(scoreText, canvas.width / 2 - 100, canvas.height / 2);
-  level += 1;
-  state.strokeCount = 0;
 
+  // Spara antal slag för banan
+  saveStrokesForCourse(state.level, state.strokeCount);
+
+  // Återställ slag och gå till nästa bana
+  state.strokeCount = 0;
+  // state.level++;
+
+  goToNextLevel();  // <-- Se till att den här funktionen laddar nästa bana korrekt
 }
 
 export function moveBall() {

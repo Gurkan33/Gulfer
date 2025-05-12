@@ -1,5 +1,6 @@
 
 import { canvas,ctx, } from "./game.js";
+import {state} from "./gameState.js";
 
 /*olika kommandon för objekten: 
 
@@ -31,7 +32,8 @@ import { canvas,ctx, } from "./game.js";
 */
 
 
-export let objects = [ 
+export let objects = {
+    1:[
     { x: 1400, y: 500, radius: 30, hitbox: 'circle', color: '', sprite: "assets/rock.png", offsetX: 200, offsety: 200, size:100 },
     { x: 1000, y: 600, radius: 30, hitbox: 'circle', color: '', sprite: "assets/golfspelare.png", offsetX: 25, offsety: 10, size:100},
     { x: 500, y: 700, radius: 115, hitbox: 'circle', color: 'red', type:"collider"},
@@ -64,17 +66,35 @@ export let objects = [
     { x: 500, y: 600, radius: 100, hitbox: 'circle', color: 'yellow', type:"sand"},
     //hole:
     {x:1650, y:475, radius:10, hitbox: "circle", color:"black", type:"hole"}
-];
+    
+    ],
+    2:[
+        { x: 1400, y: 500, radius: 30, hitbox: 'circle', color: '', sprite: "assets/rock.png", offsetX: 200, offsety: 200, size:100 },
+        { x: 1000, y: 600, radius: 30, hitbox: 'circle', color: '', sprite: "assets/golfspelare.png", offsetX: 25, offsety: 10, size:100},
+        { x: 500, y: 700, radius: 115, hitbox: 'circle', color: 'red', type:"collider"},
+    ],
+    3:[
+        
+    ],
+    4:[],
+    5:[],
+    6:[],
+    7:[],
+    8:[],
+    9:[],
+};
+
 
 export function drawObjects() {
-    objects.forEach(obj => {
+    objects[state.level].forEach(obj => {
         if (!obj.sprite) {
 
             if (obj.type === "water") {
-                //ctx.fillStyle = "rgba(0, 0, 255, 0.6)";
-                ctx.fillStyle = "transparent";
+                ctx.fillStyle = "rgba(0, 0, 255, 0.6)";
+                //ctx.fillStyle = "transparent";
             } else if (obj.type === "sand") {
                 ctx.fillStyle = "rgba(255, 255, 0, 0.5)";
+                //ctx.fillStyle = "transparent";
             }
             else if (obj.type === "hole") {
                 ctx.fillStyle = "rgba(0, 0, 0, 1)";

@@ -96,8 +96,8 @@ function handleRectangleCollision(ball, obj) {
   }
 }
 
-export function detectCollision(ball, objects) {
-  objects.forEach((obj) => {
+export function detectCollision(ball, Collisionobjects) {
+  Collisionobjects.forEach((obj) => {
     let isInside = false;
 
     // Kontrollera om bollen är inuti objektet baserat på hitbox-typ
