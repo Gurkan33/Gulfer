@@ -2,7 +2,7 @@ export const state = {
   gamePhase: "angle",
   strokeCount: 0, // Antal slag för den aktuella banan
   strokesPerCourse: {}, // Sparar antal slag för varje bana
-  level: 1, // Aktuell bana
+  level: 3, // Aktuell bana
   totalScore: 0,
 
   parPerCourse: {
@@ -30,6 +30,8 @@ export function getScoreText(level) {
   const strokes = state.strokeCount;
 
   const diff = strokes - par;
+
+  console.log(`Par: ${par}, Strokes: ${strokes}, Diff: ${diff}`);
 
   if (diff === 0) return "Par";
   if (diff === -1) return "Birdie!";

@@ -5,9 +5,10 @@ canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
 let backgroundImg = new Image();
+let runGameLoop = true;
 
 
-import { state, getScoreText } from "./gameState.js";
+import { state, getScoreText,saveStrokesForCourse } from "./gameState.js";
 
 import {
     ball,
@@ -50,16 +51,22 @@ import { course_levels } from "./course.js";
 //canvas.addEventListener('click', shootBall);
 
 
+function drawHoleInfo(){
+    ctx.font = "32px MinFont";
+    ctx.fillStyle = "white";
+    ctx.fillText("hole:  " + state.level + "  -  par:  " + state.parPerCourse[state.level], 30, 50);
+}
+
 function drawScore() {
     ctx.font = "32px MinFont";
     ctx.fillStyle = "white";
-    ctx.fillText("Slag: " + state.strokeCount, 30, 50);
+    ctx.fillText("Slag:  " + state.strokeCount, 30, 80);
 }
 
 function drawBallStatus() {
     ctx.font = "32px MinFont";
     ctx.fillStyle = "white";
-    let ballStatus = "On the course";
+    let ballStatus = "On  the  course";
 
     if (ball.inWater) {
         ballStatus = "In water"
@@ -70,39 +77,56 @@ function drawBallStatus() {
     }
 
 
-    ctx.fillText("Ball Status : " + ballStatus, 30, 80);
+    ctx.fillText("Ball  Status:  " + ballStatus, 30, 110);
 }
 
+
+
 export function goToNextLevel() {
-    getScoreText(state.level)
-  state.level++;
+     runGameLoop = false; // Stoppar gameLoop
 
-  if (!course_levels[state.level]) {
-    console.log("Spelet är slut!");
-    return;
-  }
+    saveStrokesForCourse(state.level, state.strokeCount); //sparar poänegenm för hålet
+    const scoreText = getScoreText(state.level); //räknar ut poängen
+    state.strokeCount = 0;
 
-  // Ladda ny bakgrund
-  backgroundImg.src = course_levels[state.level].backgroundImg;
+    ctx.fillStyle = "white";
+    ctx.font = "48px MinFont";
+    ctx.fillText(scoreText, canvas.width / 2 - 100, canvas.height / 2);
 
-  // Återställ bollen
-  ball.x = course_levels[state.level].teeStartPosX;
-  ball.y = course_levels[state.level].teeStartPosY;
-  ball.directionX = 0;
-  ball.directionY = 0;
-  ball.z = 0;
-  ball.zSpeed = 0;
-  ball.inHole = false;
-  ball.inWater = false;
-  ball.inBunker = false;
-  ball.inBush = false;
-  ball.isInAir = false;
+    // Vänta 5 sekunder innan nästa nivå laddas
+    setTimeout(() => {
+        runGameLoop = true; 
+        state.level++; // Öka nivån
 
-  state.strokeCount = 0;
-  state.gamePhase = "angle";
+        if (state.level > course_levels.length) {
+            console.log("Spelet är slut!");
+            return;
+        }
+
+        // Ladda ny bakgrund
+        backgroundImg.src = course_levels[state.level].backgroundImg;
+
+        // Återställ bollen
+        ball.x = course_levels[state.level].teeStartPosX;
+        ball.y = course_levels[state.level].teeStartPosY;
+        ball.speed = 0
+        ball.directionX = 0;
+        ball.directionY = 0;
+        ball.z = 0;
+        ball.zSpeed = 0;
+        ball.inHole = false;
+        ball.inWater = false;
+        ball.inBunker = false;
+        ball.inBush = false;
+        ball.isInAir = false;
+
+        state.strokeCount = 0;
+        state.gamePhase = "angle";
+    }, 3000); // Vänta 5000 ms (5 sekunder)
 }
 
 function gameLoop() {
+    if(runGameLoop){
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     backgroundImg.src = course_levels[state.level].backgroundImg;
     ctx.drawImage(backgroundImg, 0, 0, canvas.width, canvas.height);
@@ -118,6 +142,8 @@ function gameLoop() {
     drawPlayer();
     drawScore();
     drawBallStatus();
+    drawHoleInfo();
+
 
     if (ball.directionX === 0 && ball.directionY === 0) {
         drawArrow(ball.x, ball.y);
@@ -127,6 +153,7 @@ function gameLoop() {
         updateAngleMeter();// Lägg till drawAngleMeter om du vill ha visuell indikator
     } else if (state.gamePhase === "speed") {
         updateSpeedMeter();
+    }
     }
 
     requestAnimationFrame(gameLoop);

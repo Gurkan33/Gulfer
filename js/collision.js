@@ -121,7 +121,7 @@ export function detectCollision(ball, objList) {
     }
 
     if (isInside) {
-      if (obj.type === "collider" || !obj.type) {
+      if (obj.type === "collider" || !obj.type || obj.type === "rock") {
         if (obj.hitbox === "circle") {
           handleCircleCollision(ball, obj);
         } else if (obj.hitbox === "rectangle") {

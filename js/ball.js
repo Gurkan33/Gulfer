@@ -1,7 +1,7 @@
 import { course_levels } from "./course.js";
 import { shootAngle, resetAngleMeter, drawArrow, angle } from "./angleMeter.js";
 import { shootSpeed, resetSpeedMeter } from "./speedmeter.js";
-import { state, saveStrokesForCourse, getScoreText} from "./gameState.js";
+import { state, saveStrokesForCourse,} from "./gameState.js";
 import { canvas, ctx, goToNextLevel} from "./game.js";
 
 
@@ -87,20 +87,8 @@ const hålLjud = document.getElementById("hålLjud");
 export function ballInHole() {
   console.log("Bollen är i hålet!");
 
-
-  const scoreText = getScoreText(state.level);
-
-
-  // Ritar poängen
-  ctx.fillStyle = "white";
-  ctx.font = "48px MinFont";
-  ctx.fillText(scoreText, canvas.width / 2 - 100, canvas.height / 2);
-
-
-  saveStrokesForCourse(state.level, state.strokeCount);
-
-
-  state.strokeCount = 0;
+    ball.x = -100; // Sätt bollen utanför spelområdet för att inte hitboxen ska nudda hålet fler gånger
+    ball.y = -100;
 
   hålLjud.play();
   
