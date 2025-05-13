@@ -38,7 +38,7 @@ export let objects = {
     1:[
     { x: 1400, y: 500, radius: 30, hitbox: 'circle', color: '', sprite: "assets/rock.png", offsetX: 200, offsety: 200, size:100 },
     { x: 1000, y: 600, radius: 30, hitbox: 'circle', color: '', sprite: "assets/golfspelare.png", offsetX: 25, offsety: 10, size:100},
-    { x: 500, y: 700, radius: 115, hitbox: 'circle', color: 'red', type:"collider"},
+    // { x: 500, y: 700, radius: 115, hitbox: 'circle', color: 'red', type:"collider"},
 
     //water:
     { x: 270, y: 200, radius: 80, hitbox: 'circle', color: 'blue', type:"water"},
@@ -64,7 +64,7 @@ export let objects = {
     { x: 1235, y: 790, radius: 55, hitbox: 'circle', color: 'blue', type:"water"},
 
     //sand
-    { x: 1600, y: 600, radius: 30, hitbox: 'circle', color: 'yellow', type:"sand"},
+    { x: 1600, y: 600, radius: 100, hitbox: 'circle', color: 'yellow', type:"sand"},
     { x: 500, y: 600, radius: 100, hitbox: 'circle', color: 'yellow', type:"sand"},
     //hole:
     {x:1650, y:475, radius:10, hitbox: "circle", color:"black", type:"hole"}
@@ -73,18 +73,97 @@ export let objects = {
     2:[
         { x: 1400, y: 500, radius: 30, hitbox: 'circle', color: '', sprite: "assets/rock.png", offsetX: 200, offsety: 200, size:100 },
         { x: 1000, y: 600, radius: 30, hitbox: 'circle', color: '', sprite: "assets/golfspelare.png", offsetX: 25, offsety: 10, size:100},
-        { x: 500, y: 700, radius: 115, hitbox: 'circle', color: 'red', type:"collider"},
-        { x: 1000, y: 400, radius: 50, hitbox: 'circle', color: 'yellow', type: 'sand'}, 
+        // { x: 500, y: 700, radius: 115, hitbox: 'circle', color: 'red', type:"collider"},
+        { x: 790, y: 310, radius: 60, hitbox: 'circle', color: 'yellow', type: "sand"}, 
+        { x: 600, y: 310, radius: 40, hitbox: 'circle', color: 'yellow', type: "sand'"},
+        { x: 630, y: 250, width: 200, height: 90, hitbox: 'rectangle', color: 'blue', rotation: 0, type:"sand"},
+        { x: 550, y: 570, radius: 55, hitbox: 'circle', color: 'yellow', type: "sand"},
+        { x: 755, y: 590, radius: 35, hitbox: 'circle', color: 'yellow', type: "sand"},
+        { x: 550, y: 530, width: 200, height: 90, hitbox: 'rectangle', color: 'blue', rotation: 0, type:"sand"},
+        { x: 1425, y: 220, width: 200, height: 70, hitbox: 'rectangle', color: 'blue', rotation: -25, type:"sand"},
+        { x: 1300, y: 590, width: 140, height: 60, hitbox: 'rectangle', color: 'blue', rotation: 10, type:"sand"},
+        { x: 1300, y: 610, radius: 30, hitbox: 'circle', color: 'yellow', type: "sand"},
+        { x: 1430, y: 625, radius: 35, hitbox: 'circle', color: 'yellow', type: "sand"},
+        { x: 1220, y: 275, radius: 30, hitbox: 'circle', color: 'yellow', type: "water"},
+        { x: 1390, y: 200, radius: 30, hitbox: 'circle', color: 'yellow', type: 'water'},
+        { x: 1230, y: 210, width: 160, height: 60, hitbox: 'rectangle', color: 'blue', rotation: -20, type:"water"},
+        {x:1700, y:365, radius:10, hitbox: "circle", color:"black", type:"hole"}
+
     ],
     3:[
+        { x: 470, y: 620, width: 1200, height: 800, hitbox: 'rectangle', color: 'blue', rotation: -30, type:"water"},
+        { x: 1200, y: 310, width: 1200, height: 800, hitbox: 'rectangle', color: 'blue', rotation: -30, type:"water"},
+        { x: 1400, y: 280, width: 1200, height: 800, hitbox: 'rectangle', color: 'blue', rotation: -65, type:"water"},
+        { x: 1430, y: 450, radius: 70, hitbox: 'circle', color: 'yellow', type: 'water'},
+        { x: 1490, y: 470, radius: 70, hitbox: 'circle', color: 'yellow', type: 'water'},
+        { x: 1120, y: 330, radius: 146, hitbox: 'circle', color: 'yellow', type: 'water'},
+        { x: 1110, y: 380, width: 200, height: 100, hitbox: 'rectangle', color: 'blue', rotation: -30, type:"water"},
+        {x:1550, y:260, radius:10, hitbox: "circle", color:"black", type:"hole"}
+        
         
     ],
-    4:[],
-    5:[],
-    6:[],
-    7:[],
-    8:[],
-    9:[],
+    4:[
+        { x: 1580, y: 650, radius: 60, hitbox: 'circle', color: 'yellow', type: 'sand'},
+        { x: 1630, y: 625, radius: 80, hitbox: 'circle', color: 'yellow', type: 'sand'},
+        { x: 1720, y: 600, radius: 70, hitbox: 'circle', color: 'yellow', type: 'sand'},
+        { x: 1340, y: 710, radius: 60, hitbox: 'circle', color: 'yellow', type: 'water'},
+        { x: 900, y: 690, width: 400, height: 130, hitbox: 'rectangle', color: 'blue', rotation: -8, type:"water"},
+        { x: 870, y: 780, radius: 60, hitbox: 'circle', color: 'yellow', type: 'water'},
+        { x: 950, y: 330, radius: 50, hitbox: 'circle', color: 'yellow', type: 'water'},
+        { x: 1520, y: 180, radius: 60, hitbox: 'circle', color: 'yellow', type: 'water'},
+        { x: 940, y: 190, width: 600, height: 120, hitbox: 'rectangle', color: 'blue', rotation: -15, type:"water"},
+        {x:1700, y:350, radius:10, hitbox: "circle", color:"black", type:"hole"}
+    ],
+    5:[
+        { x: 1430, y: 500, radius: 40, hitbox: 'circle', color: 'yellow', type: 'sand'},
+        { x: 1490, y: 590, radius: 30, hitbox: 'circle', color: 'yellow', type: 'sand'},
+        { x: 1550, y: 540, radius: 30, hitbox: 'circle', color: 'yellow', type: 'sand'},
+        { x: 1530, y: 750, width: 900, height: 500, hitbox: 'rectangle', color: 'blue', rotation: -90, type:"water"},
+        { x: 1680, y: -60, width: 900, height: 500, hitbox: 'rectangle', color: 'blue', rotation: -70, type:"water"},
+        { x: 1680, y: -50, width: 900, height: 500, hitbox: 'rectangle', color: 'blue', rotation: 60, type:"water"},
+        { x: 1810, y: -60, width: 900, height: 500, hitbox: 'rectangle', color: 'blue', rotation: 0, type:"water"},
+        {x:1670, y:300, radius:10, hitbox: "circle", color:"black", type:"hole"}
+    ],
+    6:[
+        { x: 1580, y: 210, radius: 130, hitbox: 'circle', color: 'yellow', type: 'sand'},
+        { x: 1480, y: 230, radius: 90, hitbox: 'circle', color: 'yellow', type: 'sand'},
+        { x: 1690, y: 270, radius: 80, hitbox: 'circle', color: 'yellow', type: 'sand'},
+        { x: 670, y: 1330, radius: 600, hitbox: 'circle', color: 'yellow', type: 'water'},
+        { x: 1170, y: 740, radius: 220, hitbox: 'circle', color: 'yellow', type: 'water'},
+        { x: 600, y: 650, width: 700, height: 500, hitbox: 'rectangle', color: 'blue', rotation: -25, type:"water"},
+        { x: 1300, y: 800, width: 900, height: 500, hitbox: 'rectangle', color: 'blue', rotation: 0, type:"water"},
+        { x: 1300, y: 770, width: 900, height: 500, hitbox: 'rectangle', color: 'blue', rotation: -10, type:"water"},
+        {x:1600, y:600, radius:10, hitbox: "circle", color:"black", type:"hole"}
+    ],
+    7:[
+        { x: 100, y: 890, radius: 220, hitbox: 'circle', color: 'yellow', type: 'water'},
+        { x: 200, y: 740, width: 900, height: 500, hitbox: 'rectangle', color: 'blue', rotation: 6, type:"water"},
+        { x: 930, y: 975, radius: 320, hitbox: 'circle', color: 'yellow', type: 'water'},
+        { x: 900, y: 720, width: 900, height: 500, hitbox: 'rectangle', color: 'blue', rotation: 10, type:"water"},
+        { x: 1200, y: 740, width: 900, height: 500, hitbox: 'rectangle', color: 'blue', rotation: -5, type:"water"},
+        { x: 100, y: 70, radius: 220, hitbox: 'circle', color: 'yellow', type: 'water'},
+        { x: 200, y: -260, width: 900, height: 500, hitbox: 'rectangle', color: 'blue', rotation: -6, type:"water"},
+        { x: 1200, y: -30, radius: 320, hitbox: 'circle', color: 'yellow', type: 'water'},
+        { x: 250, y: -260, width: 900, height: 500, hitbox: 'rectangle', color: 'blue', rotation: 6, type:"water"},
+        { x: 1200, y: -290, width: 900, height: 500, hitbox: 'rectangle', color: 'blue', rotation: -8, type:"water"},
+        { x: 1950, y: -70, radius: 320, hitbox: 'circle', color: 'yellow', type: 'water'},
+        {x:1700, y:500, radius:10, hitbox: "circle", color:"black", type:"hole"}
+    ],
+    8:[
+        { x: 1720, y: 500, radius: 70, hitbox: 'circle', color: 'yellow', type: 'sand'},
+        { x: 670, y: 750, radius: 120, hitbox: 'circle', color: 'yellow', type: 'water'},
+        { x: 700, y: 610, width: 600, height: 240, hitbox: 'rectangle', color: 'blue', rotation: 0, type:"water"},
+        { x: 1370, y: 700, radius: 120, hitbox: 'circle', color: 'yellow', type: 'water'},
+        {x:1700, y:800, radius:10, hitbox: "circle", color:"black", type:"hole"}
+    ],
+    9:[
+        { x: 1100, y: 280, radius: 150, hitbox: 'circle', color: 'yellow', type: 'sand'},
+        { x: 1200, y: 260, radius: 130, hitbox: 'circle', color: 'yellow', type: 'sand'},
+        { x: 1000, y: 280, radius: 100, hitbox: 'circle', color: 'yellow', type: 'sand'},
+        { x: 1750, y: 800, radius: 100, hitbox: 'circle', color: 'yellow', type: 'sand'},
+        { x: 1800, y: 700, radius: 100, hitbox: 'circle', color: 'yellow', type: 'sand'},
+        {x:1600, y:150, radius:10, hitbox: "circle", color:"black", type:"hole"}
+    ],
 };
 
 
@@ -94,10 +173,10 @@ export function drawObjects() {
 
             if (obj.type === "water") {
                 ctx.fillStyle = "rgba(0, 0, 255, 0.6)";
-                //ctx.fillStyle = "transparent";
+                // ctx.fillStyle = "transparent";
             } else if (obj.type === "sand") {
                 ctx.fillStyle = "rgba(255, 255, 0, 0.5)";
-                //ctx.fillStyle = "transparent";
+                // ctx.fillStyle = "transparent";
             }
             else if (obj.type === "hole") {
                 ctx.fillStyle = "rgba(0, 0, 0, 1)";
