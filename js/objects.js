@@ -87,6 +87,8 @@ export let objects = {
         { x: 1220, y: 275, radius: 30, hitbox: 'circle', color: 'yellow', type: "water"},
         { x: 1390, y: 200, radius: 30, hitbox: 'circle', color: 'yellow', type: 'water'},
         { x: 1230, y: 210, width: 160, height: 60, hitbox: 'rectangle', color: 'blue', rotation: -20, type:"water"},
+
+        //hole:
         {x:1700, y:365, radius:10, hitbox: "circle", color:"black", type:"hole"}
 
     ],
