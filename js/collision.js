@@ -96,11 +96,15 @@ function handleRectangleCollision(ball, obj) {
   }
 }
 
-export function detectCollision(ball, obj) {
-  obj.forEach((obj) => {
+export function detectCollision(ball, objList) {
+  let isInWater = false;
+  let isInBunker = false;
+  let isInHole = false;
+  ball.inBush = false;
+
+  objList.forEach((obj) => {
     let isInside = false;
 
-    // Kontrollera om bollen är inuti objektet baserat på hitbox-typ
     if (obj.hitbox === "circle") {
       const dx = ball.x - obj.x;
       const dy = ball.y - obj.y;
@@ -116,37 +120,29 @@ export function detectCollision(ball, obj) {
       isInside = withinX && withinY;
     }
 
-  
-
-    // Om bollen är inuti objektet, hantera baserat på objektets typ
     if (isInside) {
       if (obj.type === "collider" || !obj.type) {
-        // Hantera studs för collider-objekt
         if (obj.hitbox === "circle") {
           handleCircleCollision(ball, obj);
         } else if (obj.hitbox === "rectangle") {
           handleRectangleCollision(ball, obj);
         }
       } else if (obj.type === "water" && !ball.isInAir) {
-        ball.inWater = true;
-        ballInWater()
+        isInWater = true;
+        ballInWater();
       } else if (obj.type === "sand" && !ball.isInAir) {
-        ball.inBunker = true;
+        isInBunker = true;
       } else if (obj.type === "hole" && !ball.isInAir) {
-        ball.inHole = true;
-        ballInHole()
+        isInHole = true;
+        ballInHole();
       } else if (obj.type === "bush" && !ball.isInAir) {
         ball.inBush = true;
       }
-    } else {
-      // Om bollen inte är inuti objektet, återställ tillstånd
-      if (obj.type === "water") {
-        ball.inWater = false;
-      } else if (obj.type === "sand") {
-        ball.inBunker = false;
-      } else if (obj.type === "hole") {
-        ball.inHole = false;
-      }
     }
   });
+
+  // Sätt tillstånd efter alla kollisionskontroller
+  ball.inWater = isInWater;
+  ball.inBunker = isInBunker;
+  ball.inHole = isInHole;
 }
