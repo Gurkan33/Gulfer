@@ -76,29 +76,32 @@ export function ballInWater() {
   ball.z = 0;
   ball.zSpeed = 0;
 
-  //INGOLF FIXAR LJUD HÄR
+  vattenLjud.play();
 
   state.gamePhase = "angle";
 }
+
+const hålLjud = document.getElementById("hålLjud");
 
 export function ballInHole() {
   console.log("Bollen är i hålet!");
 
   const scoreText = getScoreText(state.level);
 
-  // Rita poängen
+  // Ritar poängen
   ctx.fillStyle = "white";
   ctx.font = "48px MinFont";
   ctx.fillText(scoreText, canvas.width / 2 - 100, canvas.height / 2);
 
-  // Spara antal slag för banan
+
   saveStrokesForCourse(state.level, state.strokeCount);
 
-  // Återställ slag och gå till nästa bana
-  state.strokeCount = 0;
-  // state.level++;
 
-  goToNextLevel();  // <-- Se till att den här funktionen laddar nästa bana korrekt
+  state.strokeCount = 0;
+
+  hålLjud.play();
+
+  goToNextLevel(); 
 }
 
 export function moveBall() {
@@ -161,7 +164,7 @@ export function moveBall() {
   ball.rotation += rotationSpeed;
 }
 
-const ljud = document.getElementById("ljud");
+const slagLjud = document.getElementById("ljud");
 
 export function shootBall() {
   // Spara bollens position innan slaget
@@ -180,5 +183,5 @@ export function shootBall() {
 
   resetSpeedMeter();
   resetAngleMeter();
-    ljud.play(); // Spela upp ljudet
+    slagLjud.play(); // Spela upp ljudet
 }
