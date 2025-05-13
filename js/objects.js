@@ -37,7 +37,7 @@ import {state} from "./gameState.js";
 export let objects = {
     1:[
     { x: 1400, y: 500, radius: 30, hitbox: 'circle', color: '', sprite: "assets/rock.png", offsetX: 200, offsety: 200, size:100 },
-    { x: 1000, y: 750, radius: 30, hitbox: 'circle', color: '', sprite: "assets/bush1.png", offsetX: 25, offsety: 10, size:100},
+    { x: 1000, y: 750, radius: 35, hitbox: 'circle', color: '', sprite: "assets/bush1.png", offsetX: 43, offsety: 43, size:100},
     // { x: 500, y: 700, radius: 115, hitbox: 'circle', color: 'red', type:"collider"},
 
     //water:
@@ -74,7 +74,7 @@ export let objects = {
     ],
     2:[
         { x: 1400, y: 500, radius: 30, hitbox: 'circle', color: '', sprite: "assets/rock.png", offsetX: 200, offsety: 200, size:100 },
-        { x: 1000, y: 600, radius: 30, hitbox: 'circle', color: '', sprite: "assets/bush1.png", offsetX: 25, offsety: 10, size:100},
+        { x: 1000, y: 600, radius: 30, hitbox: 'circle', color: '', sprite: "assets/bush1.png", offsetX: 0, offsety: 0, size:100},
         // { x: 500, y: 700, radius: 115, hitbox: 'circle', color: 'red', type:"collider"},
   
         { x: 1220, y: 275, radius: 30, hitbox: 'circle', color: 'yellow', type: "water"},
@@ -210,7 +210,7 @@ export function drawObjects() {
             img.src = obj.sprite;
             ctx.drawImage(img, obj.x - (img.width / 2) + obj.offsetX, obj.y - (img.width / 2) + obj.offsety, obj.size, obj.size);
 
-            ctx.fillStyle = "rgba(195, 238, 5, 0.5)";
+            ctx.fillStyle = "rgba(255, 38, 0, 0.5)";
             if (obj.hitbox === 'circle') {
                 ctx.beginPath();
                 ctx.arc(obj.x, obj.y, obj.radius, 0, Math.PI * 2);
