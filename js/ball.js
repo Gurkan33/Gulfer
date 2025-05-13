@@ -81,12 +81,15 @@ export function ballInWater() {
   state.gamePhase = "angle";
 }
 
+
 const hålLjud = document.getElementById("hålLjud");
 
 export function ballInHole() {
   console.log("Bollen är i hålet!");
 
+
   const scoreText = getScoreText(state.level);
+
 
   // Ritar poängen
   ctx.fillStyle = "white";
@@ -100,8 +103,8 @@ export function ballInHole() {
   state.strokeCount = 0;
 
   hålLjud.play();
-
-  goToNextLevel(); 
+  
+  goToNextLevel()
 }
 
 export function moveBall() {

@@ -7,7 +7,7 @@ canvas.height = window.innerHeight;
 let backgroundImg = new Image();
 
 
-import { state } from "./gameState.js";
+import { state, getScoreText } from "./gameState.js";
 
 import {
     ball,
@@ -74,6 +74,7 @@ function drawBallStatus() {
 }
 
 export function goToNextLevel() {
+    getScoreText(state.level)
   state.level++;
 
   if (!course_levels[state.level]) {

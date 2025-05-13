@@ -1,7 +1,7 @@
 import { 
   ball, 
   ballInHole, 
-  ballInWater
+  ballInWater,
 } from "./ball.js";
 import { canvas,ctx, } from "./game.js";
 
@@ -134,6 +134,9 @@ export function detectCollision(ball, objList) {
         isInBunker = true;
       } else if (obj.type === "hole" && !ball.isInAir) {
         isInHole = true;
+        ball.speed = 0
+        ball.directionX = 0
+        ball.directionY = 0
         ballInHole();
       } else if (obj.type === "bush" && !ball.isInAir) {
         ball.inBush = true;
