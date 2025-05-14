@@ -83,46 +83,23 @@ function drawBallStatus() {
 
 
 export function goToNextLevel() {
-     runGameLoop = false; // Stoppar gameLoop
-
-    saveStrokesForCourse(state.level, state.strokeCount); //sparar poänegenm för hålet
-    const scoreText = getScoreText(state.level); //räknar ut poängen
+    runGameLoop = false;
+    saveStrokesForCourse(state.level, state.strokeCount);
+    const scoreText = getScoreText(state.level);
     state.strokeCount = 0;
 
     ctx.fillStyle = "white";
     ctx.font = "48px MinFont";
     ctx.fillText(scoreText, canvas.width / 2 - 100, canvas.height / 2);
 
-    // Vänta 5 sekunder innan nästa nivå laddas
     setTimeout(() => {
-        runGameLoop = true; 
-        state.level++; // Öka nivån
-
-        if (state.level > course_levels.length) {
-            console.log("Spelet är slut!");
+        state.level++;
+        if (!course_levels[state.level]) {
+            showEndScreen();
             return;
         }
-
-        // Ladda ny bakgrund
-        backgroundImg.src = course_levels[state.level].backgroundImg;
-
-        // Återställ bollen
-        ball.x = course_levels[state.level].teeStartPosX;
-        ball.y = course_levels[state.level].teeStartPosY;
-        ball.speed = 0
-        ball.directionX = 0;
-        ball.directionY = 0;
-        ball.z = 0;
-        ball.zSpeed = 0;
-        ball.inHole = false;
-        ball.inWater = false;
-        ball.inBunker = false;
-        ball.inBush = false;
-        ball.isInAir = false;
-
-        state.strokeCount = 0;
-        state.gamePhase = "angle";
-    }, 3000); // Vänta 5000 ms (5 sekunder)
+        // ...resten av koden för att ladda nästa bana...
+    }, 3000);
 }
 
 function gameLoop() {
@@ -163,6 +140,7 @@ function gameLoop() {
 let gameStarted = false;
 let spacePressed = false;
 let instructionShown = false;
+let endScreenShown = false;
 
 function startGame() {
     const startScreen = document.getElementById("startScreen");
@@ -175,19 +153,42 @@ function startGame() {
 
 function beginGameLoop() {
     const instructionScreen = document.getElementById("instructionScreen");
-    const canvas = document.getElementById("gameCanvas");
 
     instructionScreen.style.display = "none";
+    startScreen.style.display = "none";
     canvas.style.display = "block";
     gameStarted = true;
+    runGameLoop = true;
     gameLoop();
+}
+
+beginGameLoop();
+
+function showEndScreen() {
+    document.getElementById("gameCanvas").style.display = "none";
+    document.getElementById("endScreen").style.display = "flex";
+
+    // Skapa summering av rundan
+    let summary = "<h2>Your round:</h2><ul>";
+    for (let i = 1; i <= 9; i++) {
+        summary += `<li>Hole ${i}: ${state.strokesPerCourse[i] ?? "-"} strokes (Par ${state.parPerCourse[i]})</li>`;
+    }
+    summary += "</ul>";
+
+    endScreenShown = true;
+
+    // Visa summeringen
+    document.getElementById("scoreSummary").innerHTML = summary;
 }
 
 document.addEventListener("keydown", function (event) {
     if (!gameStarted && !instructionShown && event.code === "Enter") {
         startGame(); // Visa instruktioner
-    } else if (!gameStarted && instructionShown && event.code === "Space") {
+    } else if (!gameStarted && instructionShown && event.code === "Enter") {
         beginGameLoop(); // Starta själva spelet efter instruktion
+    }else if(endScreenShown && event.code === "Enter"){
+        location.reload();
+
     }
 
     if (gameStarted && event.code === "Space" && !spacePressed) {

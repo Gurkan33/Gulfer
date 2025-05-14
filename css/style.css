@@ -64,3 +64,25 @@ body {
 #instructionScreen ul {
     font-size: 1.5rem;
 }
+
+.info{
+    font-size: 1.5rem;
+    color: white;
+    text-align: center;
+    font-family: 'MinFont';
+}
+
+#endScreen {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: #14500c;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: 'MinFont';
+    z-index: 20;
+    text-align: center;
+}

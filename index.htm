@@ -23,15 +23,33 @@
     <div id="instructionScreen" style="display: none;">
         <h2>Here's how you play:</h2>
         <ul>
+            <hr>
+            <p class="info">!INFO!</p>
+            <p class="info">1: Shot strength 0 - 20</p>
+            <p class="info">2: Water will backtrack your shot</p>
+            <p class="info">3: The ball will bounce off rocks and objects</p>
+            <p class="info">4: The friction will increase in bunkers and bushes</p>
+
+            <hr>
+
+            <p>USE <strong>SPACE</strong> TO PROCEED WITH THE STEPS</p>
             <li>1: choose direction</li>
             <li>2: choose speed</li>
             <li>3: hit the ball</li>
+            <hr>
         </ul>
-        <p>Press <strong>space</strong> to   start!</p>
+        
+        <p>Press <strong>ENTER</strong> to   start!</p>
     </div>
     
     <!-- Canvas-elementet där själva spelet kommer att renderas -->
     <canvas id="gameCanvas" class="golfCourse"></canvas>
+
+    <div id="endScreen" style="display: none;">
+        <h2>Game Over!</h2>
+        <div id="scoreSummary"></div>
+        <p>Press <strong>Enter</strong> to play again!</p>
+    </div>
 
     <!-- Länkar till JavaScript-filen för spelets funktionalitet -->
     <script type="module" src="js/game.js"></script>

@@ -2,7 +2,7 @@ export const state = {
   gamePhase: "angle",
   strokeCount: 0, // Antal slag för den aktuella banan
   strokesPerCourse: {}, // Sparar antal slag för varje bana
-  level: 1, // Aktuell bana
+  level: 8, // Aktuell bana
   totalScore: 0,
 
   parPerCourse: {

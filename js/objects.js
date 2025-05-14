@@ -33,7 +33,7 @@ import {state} from "./gameState.js";
 
 */
 
-const drawHitboxes = false; // true = rita hitboxes, false = rita inte hitboxes
+const drawHitboxes = true; // true = rita hitboxes, false = rita inte hitboxes
 export let objects = {
     1:[
 
@@ -101,15 +101,15 @@ export let objects = {
         { x: 1230, y: 210, width: 160, height: 60, hitbox: 'rectangle', color: 'blue', rotation: -20, type:"water"},
 
         { x: 790, y: 310, radius: 60, hitbox: 'circle', color: 'yellow', type: "sand"}, 
-        { x: 600, y: 310, radius: 40, hitbox: 'circle', color: 'yellow', type: "sand'"},
+        { x: 600, y: 310, radius: 40, hitbox: 'circle', color: 'yellow', type: "sand"},
         { x: 630, y: 250, width: 200, height: 90, hitbox: 'rectangle', color: 'blue', rotation: 0, type:"sand"},
         { x: 550, y: 570, radius: 55, hitbox: 'circle', color: 'yellow', type: "sand"},
         { x: 755, y: 590, radius: 35, hitbox: 'circle', color: 'yellow', type: "sand"},
-        { x: 550, y: 530, width: 200, height: 90, hitbox: 'rectangle', color: 'blue', rotation: 0, type:"sand"},
+       { x: 550, y: 530, width: 200, height: 90, hitbox: 'rectangle', color: 'blue', rotation: 0, type:"sand"},
         { x: 1425, y: 220, width: 200, height: 70, hitbox: 'rectangle', color: 'blue', rotation: -25, type:"sand"},
         { x: 1300, y: 590, width: 140, height: 60, hitbox: 'rectangle', color: 'blue', rotation: 10, type:"sand"},
         { x: 1300, y: 610, radius: 30, hitbox: 'circle', color: 'yellow', type: "sand"},
-        { x: 1430, y: 625, radius: 35, hitbox: 'circle', color: 'yellow', type: "sand"},
+       { x: 1430, y: 625, radius: 35, hitbox: 'circle', color: 'yellow', type: "sand"},
 
         //hole:
         {x:1700, y:365, radius:10, hitbox: "circle", color:"black", type:"hole"}
@@ -127,13 +127,27 @@ export let objects = {
         { x: 450, y: 150, radius: 35, hitbox: 'circle', color: '', sprite: "assets/bush4.png", offsetX: 30, offsety: 27, size:100, type:"bush"},
 
 
-        { x: 470, y: 620, width: 1200, height: 800, hitbox: 'rectangle', color: 'blue', rotation: -30, type:"water"},
-        { x: 1200, y: 310, width: 1200, height: 800, hitbox: 'rectangle', color: 'blue', rotation: -30, type:"water"},
+
         { x: 1430, y: 450, radius: 70, hitbox: 'circle', color: 'yellow', type: 'water'},
         { x: 1490, y: 470, radius: 70, hitbox: 'circle', color: 'yellow', type: 'water'},
         { x: 1120, y: 330, radius: 146, hitbox: 'circle', color: 'yellow', type: 'water'},
         { x: 1110, y: 380, width: 200, height: 100, hitbox: 'rectangle', color: 'blue', rotation: -30, type:"water"},
-        { x: 1585, y: 0, width: 800, height: 1200, hitbox: 'rectangle', color: 'blue', rotation: 35, type:"water"}, 
+        { x: 1040, y: 465, width: 400, height: 100, hitbox: 'rectangle', color: 'blue', rotation: -30, type:"water"},
+        { x: 700, y: 650, width: 400, height: 100, hitbox: 'rectangle', color: 'blue', rotation: -30, type:"water"},
+        { x: 400, y: 840, width: 400, height: 100, hitbox: 'rectangle', color: 'blue', rotation: -30, type:"water"},
+        { x: 1500, y: 315, width: 400, height: 100, hitbox: 'rectangle', color: 'blue', rotation: -30, type:"water"},
+        { x: 1500, y: 315, width: 400, height: 100, hitbox: 'rectangle', color: 'blue', rotation: -45, type:"water"},
+        { x: 1780, y: -10, width: 100, height: 400, hitbox: 'rectangle', color: 'blue', rotation: 22, type:"water"},
+        { x: 1860, y: 0, width: 500, height: 500, hitbox: 'rectangle', color: 'blue', rotation: 0, type:"water"},
+        { x: 1860, y: 500, width: 500, height: 500, hitbox: 'rectangle', color: 'blue', rotation: 0, type:"water"},
+        { x: 1860-500, y: 500, width: 500, height: 500, hitbox: 'rectangle', color: 'blue', rotation: 0, type:"water"},
+        { x: 1860-250, y: 350, width: 250, height: 250, hitbox: 'rectangle', color: 'blue', rotation: 0, type:"water"},
+        { x: 1860-750, y: 500, width: 250, height: 250, hitbox: 'rectangle', color: 'blue', rotation: 0, type:"water"},
+        { x: 1860-750, y: 750, width: 250, height: 250, hitbox: 'rectangle', color: 'blue', rotation: 0, type:"water"},
+        { x: 860, y: 750, width: 250, height: 250, hitbox: 'rectangle', color: 'blue', rotation: 0, type:"water"},
+        { x: 860, y: 680, width: 400, height: 150, hitbox: 'rectangle', color: 'blue', rotation: -30, type:"water"},
+        { x: 550, y: 850, width: 400, height: 150, hitbox: 'rectangle', color: 'blue', rotation: -30, type:"water"},
+
         
         {x:1550, y:260, radius:10, hitbox: "circle", color:"black", type:"hole"}
         
@@ -151,7 +165,15 @@ export let objects = {
         { x: 1520, y: 180, radius: 60, hitbox: 'circle', color: 'yellow', type: 'water'},
         { x: 940, y: 190, width: 600, height: 120, hitbox: 'rectangle', color: 'blue', rotation: -15, type:"water"},
 
-        {x:1700, y:350, radius:10, hitbox: "circle", color:"black", type:"hole"}
+        {x:1700, y:350, radius:10, hitbox: "circle", color:"black", type:"hole"},
+
+        { x: 500, y: 675, height:75, width:75, hitbox: 'rectangle', color: '', sprite: "assets/bush2.png", offsetX: 70, offsety: 70, size:100, type:"bush"},
+        { x: 1800, y: 200, radius: 35, hitbox: 'circle', color: '', sprite: "assets/bush1.png", offsetX: 43, offsety: 43, size:100, type:"bush"},
+        { x: 1350, y: 330, radius: 35, hitbox: 'circle', color: '', sprite: "assets/bush3.png", offsetX: 35, offsety: 33, size:100, type:"bush"},
+        { x: 200, y: 500, radius: 35, hitbox: 'circle', color: '', sprite: "assets/bush1.png", offsetX: 43, offsety: 43, size:100, type:"bush"},
+        { x: 450, y: 150, radius: 35, hitbox: 'circle', color: '', sprite: "assets/bush4.png", offsetX: 30, offsety: 27, size:100, type:"bush"},
+
+        
     ],
     5:[
         { x: 1430, y: 500, radius: 40, hitbox: 'circle', color: 'yellow', type: 'sand'},
@@ -162,6 +184,19 @@ export let objects = {
         { x: 1680, y: -60, width: 900, height: 500, hitbox: 'rectangle', color: 'blue', rotation: -70, type:"water"},
         { x: 1680, y: -50, width: 900, height: 500, hitbox: 'rectangle', color: 'blue', rotation: 60, type:"water"},
         { x: 1810, y: -60, width: 900, height: 500, hitbox: 'rectangle', color: 'blue', rotation: 0, type:"water"},
+
+        { x: 1100, y: 700, radius: 30, hitbox: 'circle', color: '', sprite: "assets/rock.png", offsetX: 200, offsety: 200, size:100, type:"rock"},
+
+        { x: 500, y: 675, height:75, width:75, hitbox: 'rectangle', color: '', sprite: "assets/bush2.png", offsetX: 70, offsety: 70, size:100, type:"bush"},
+        { x: 1600, y: 500, radius: 35, hitbox: 'circle', color: '', sprite: "assets/bush1.png", offsetX: 43, offsety: 43, size:100, type:"bush"},
+        { x: 1250, y: 200, radius: 35, hitbox: 'circle', color: '', sprite: "assets/bush3.png", offsetX: 35, offsety: 33, size:100, type:"bush"},
+        { x: 200, y: 500, radius: 35, hitbox: 'circle', color: '', sprite: "assets/bush1.png", offsetX: 43, offsety: 43, size:100, type:"bush"},
+        { x: 800, y: 500, radius: 35, hitbox: 'circle', color: '', sprite: "assets/bush4.png", offsetX: 30, offsety: 27, size:100, type:"bush"},
+        { x: 600, y: 300, height:75, width:75, hitbox: 'rectangle', color: '', sprite: "assets/bush2.png", offsetX: 70, offsety: 70, size:100, type:"bush"},
+        { x: 1700, y: 150, radius: 35, hitbox: 'circle', color: '', sprite: "assets/bush1.png", offsetX: 43, offsety: 43, size:100, type:"bush"},
+        { x: 1330, y: 450, radius: 35, hitbox: 'circle', color: '', sprite: "assets/bush3.png", offsetX: 35, offsety: 33, size:100, type:"bush"},
+        { x: 200, y: 500, radius: 35, hitbox: 'circle', color: '', sprite: "assets/bush1.png", offsetX: 43, offsety: 43, size:100, type:"bush"},
+        { x: 450, y: 150, radius: 35, hitbox: 'circle', color: '', sprite: "assets/bush4.png", offsetX: 30, offsety: 27, size:100, type:"bush"},
 
         {x:1670, y:300, radius:10, hitbox: "circle", color:"black", type:"hole"}
     ],
@@ -175,6 +210,19 @@ export let objects = {
         { x: 600, y: 650, width: 700, height: 500, hitbox: 'rectangle', color: 'blue', rotation: -25, type:"water"},
         { x: 1300, y: 800, width: 900, height: 500, hitbox: 'rectangle', color: 'blue', rotation: 0, type:"water"},
         { x: 1300, y: 770, width: 900, height: 500, hitbox: 'rectangle', color: 'blue', rotation: -10, type:"water"},
+
+        { x: 1000, y: 200, radius: 30, hitbox: 'circle', color: '', sprite: "assets/rock.png", offsetX: 200, offsety: 200, size:100, type:"rock"},
+
+        { x: 500, y: 650, height:75, width:75, hitbox: 'rectangle', color: '', sprite: "assets/bush2.png", offsetX: 70, offsety: 70, size:100, type:"bush"},
+        { x: 1600, y: 750, radius: 35, hitbox: 'circle', color: '', sprite: "assets/bush1.png", offsetX: 43, offsety: 43, size:100, type:"bush"},
+        { x: 1250, y: 200, radius: 35, hitbox: 'circle', color: '', sprite: "assets/bush3.png", offsetX: 35, offsety: 33, size:100, type:"bush"},
+        { x: 175, y: 850, radius: 35, hitbox: 'circle', color: '', sprite: "assets/bush1.png", offsetX: 43, offsety: 43, size:100, type:"bush"},
+        { x: 800, y: 500, radius: 35, hitbox: 'circle', color: '', sprite: "assets/bush4.png", offsetX: 30, offsety: 27, size:100, type:"bush"},
+        { x: 600, y: 250, height:75, width:75, hitbox: 'rectangle', color: '', sprite: "assets/bush2.png", offsetX: 70, offsety: 70, size:100, type:"bush"},
+        { x: 1720, y: 120, radius: 35, hitbox: 'circle', color: '', sprite: "assets/bush1.png", offsetX: 43, offsety: 43, size:100, type:"bush"},
+        { x: 1300, y: 500, radius: 35, hitbox: 'circle', color: '', sprite: "assets/bush3.png", offsetX: 35, offsety: 33, size:100, type:"bush"},
+        { x: 200, y: 350, radius: 35, hitbox: 'circle', color: '', sprite: "assets/bush1.png", offsetX: 43, offsety: 43, size:100, type:"bush"},
+        { x: 450, y: 150, radius: 35, hitbox: 'circle', color: '', sprite: "assets/bush4.png", offsetX: 30, offsety: 27, size:100, type:"bush"},
 
         {x:1600, y:600, radius:10, hitbox: "circle", color:"black", type:"hole"}
     ],
@@ -191,6 +239,15 @@ export let objects = {
         { x: 1200, y: -290, width: 900, height: 500, hitbox: 'rectangle', color: 'blue', rotation: -8, type:"water"},
         { x: 1950, y: -70, radius: 320, hitbox: 'circle', color: 'yellow', type: 'water'},
 
+        { x: 1375, y: 670, radius: 30, hitbox: 'circle', color: '', sprite: "assets/rock.png", offsetX: 200, offsety: 200, size:100, type:"rock"},
+
+        { x: 500, y: 650, height:75, width:75, hitbox: 'rectangle', color: '', sprite: "assets/bush2.png", offsetX: 70, offsety: 70, size:100, type:"bush"},
+        { x: 1600, y: 750, radius: 35, hitbox: 'circle', color: '', sprite: "assets/bush1.png", offsetX: 43, offsety: 43, size:100, type:"bush"},
+        { x: 1250, y: 320, radius: 35, hitbox: 'circle', color: '', sprite: "assets/bush3.png", offsetX: 35, offsety: 33, size:100, type:"bush"},
+        { x: 70, y: 625, radius: 35, hitbox: 'circle', color: '', sprite: "assets/bush1.png", offsetX: 43, offsety: 43, size:100, type:"bush"},
+        { x: 800, y: 650, radius: 35, hitbox: 'circle', color: '', sprite: "assets/bush4.png", offsetX: 30, offsety: 27, size:100, type:"bush"},
+        { x: 600, y: 250, height:75, width:75, hitbox: 'rectangle', color: '', sprite: "assets/bush2.png", offsetX: 70, offsety: 70, size:100, type:"bush"},
+
         {x:1700, y:500, radius:10, hitbox: "circle", color:"black", type:"hole"}
     ],
     8:[
@@ -200,6 +257,19 @@ export let objects = {
         { x: 700, y: 610, width: 600, height: 240, hitbox: 'rectangle', color: 'blue', rotation: 0, type:"water"},
         { x: 1370, y: 700, radius: 120, hitbox: 'circle', color: 'yellow', type: 'water'},
 
+        { x: 1375, y: 670, radius: 30, hitbox: 'circle', color: '', sprite: "assets/rock.png", offsetX: 200, offsety: 200, size:100, type:"rock"},
+
+        { x: 500, y: 650, height:75, width:75, hitbox: 'rectangle', color: '', sprite: "assets/bush2.png", offsetX: 70, offsety: 70, size:100, type:"bush"},
+        { x: 1600, y: 750, radius: 35, hitbox: 'circle', color: '', sprite: "assets/bush1.png", offsetX: 43, offsety: 43, size:100, type:"bush"},
+        { x: 1250, y: 200, radius: 35, hitbox: 'circle', color: '', sprite: "assets/bush3.png", offsetX: 35, offsety: 33, size:100, type:"bush"},
+        { x: 175, y: 850, radius: 35, hitbox: 'circle', color: '', sprite: "assets/bush1.png", offsetX: 43, offsety: 43, size:100, type:"bush"},
+        { x: 800, y: 500, radius: 35, hitbox: 'circle', color: '', sprite: "assets/bush4.png", offsetX: 30, offsety: 27, size:100, type:"bush"},
+        { x: 600, y: 250, height:75, width:75, hitbox: 'rectangle', color: '', sprite: "assets/bush2.png", offsetX: 70, offsety: 70, size:100, type:"bush"},
+        { x: 1720, y: 120, radius: 35, hitbox: 'circle', color: '', sprite: "assets/bush1.png", offsetX: 43, offsety: 43, size:100, type:"bush"},
+        { x: 1300, y: 500, radius: 35, hitbox: 'circle', color: '', sprite: "assets/bush3.png", offsetX: 35, offsety: 33, size:100, type:"bush"},
+        { x: 200, y: 350, radius: 35, hitbox: 'circle', color: '', sprite: "assets/bush1.png", offsetX: 43, offsety: 43, size:100, type:"bush"},
+        { x: 450, y: 150, radius: 35, hitbox: 'circle', color: '', sprite: "assets/bush4.png", offsetX: 30, offsety: 27, size:100, type:"bush"},
+
         {x:1700, y:800, radius:10, hitbox: "circle", color:"black", type:"hole"}
     ],
     9:[
@@ -208,8 +278,23 @@ export let objects = {
         { x: 1000, y: 280, radius: 100, hitbox: 'circle', color: 'yellow', type: 'sand'},
         { x: 1750, y: 800, radius: 100, hitbox: 'circle', color: 'yellow', type: 'sand'},
         { x: 1800, y: 700, radius: 100, hitbox: 'circle', color: 'yellow', type: 'sand'},
+
+        { x: 1375, y: 670, radius: 30, hitbox: 'circle', color: '', sprite: "assets/rock.png", offsetX: 200, offsety: 200, size:100, type:"rock"},
+
+        { x: 500, y: 650, height:75, width:75, hitbox: 'rectangle', color: '', sprite: "assets/bush2.png", offsetX: 70, offsety: 70, size:100, type:"bush"},
+        { x: 1600, y: 750, radius: 35, hitbox: 'circle', color: '', sprite: "assets/bush1.png", offsetX: 43, offsety: 43, size:100, type:"bush"},
+        { x: 1250, y: 200, radius: 35, hitbox: 'circle', color: '', sprite: "assets/bush3.png", offsetX: 35, offsety: 33, size:100, type:"bush"},
+        { x: 175, y: 850, radius: 35, hitbox: 'circle', color: '', sprite: "assets/bush1.png", offsetX: 43, offsety: 43, size:100, type:"bush"},
+        { x: 800, y: 500, radius: 35, hitbox: 'circle', color: '', sprite: "assets/bush4.png", offsetX: 30, offsety: 27, size:100, type:"bush"},
+        { x: 600, y: 250, height:75, width:75, hitbox: 'rectangle', color: '', sprite: "assets/bush2.png", offsetX: 70, offsety: 70, size:100, type:"bush"},
+        { x: 1720, y: 120, radius: 35, hitbox: 'circle', color: '', sprite: "assets/bush1.png", offsetX: 43, offsety: 43, size:100, type:"bush"},
+        { x: 1300, y: 500, radius: 35, hitbox: 'circle', color: '', sprite: "assets/bush3.png", offsetX: 35, offsety: 33, size:100, type:"bush"},
+        { x: 200, y: 350, radius: 35, hitbox: 'circle', color: '', sprite: "assets/bush1.png", offsetX: 43, offsety: 43, size:100, type:"bush"},
+        { x: 450, y: 150, radius: 35, hitbox: 'circle', color: '', sprite: "assets/bush4.png", offsetX: 30, offsety: 27, size:100, type:"bush"},
+
+        {x:1670, y:200, radius:10, hitbox: "circle", color:"black", type:"hole"}
         
-        {x:1600, y:150, radius:10, hitbox: "circle", color:"black", type:"hole"}
+        //{x:1600, y:150, radius:10, hitbox: "circle", color:"black", type:"hole"}
     ],
 };
 
