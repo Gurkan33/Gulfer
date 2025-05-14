@@ -1,32 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Sätter upp grundläggande meta-information, t.ex. teckenkodning och responsivitet -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Golfboll Spel</title>
-    <link rel="stylesheet" href="css/style.css">
+    <title>Golfboll Spel</title> <!-- Titel på webbsidan -->
+    <link rel="stylesheet" href="css/style.css"> <!-- Länkar till den externa CSS-filen -->
+    
+    <!-- Ljudfiler för spelets effekter -->
     <audio id="ljud" src="sound/golfslag.mp3"></audio>
     <audio id="vattenLjud" src="sound/Sound of a stone falling into water without copyright , stone sounds-[AudioTrimmer.com].mp3"></audio>
     <audio id="hålLjud" src="sound/FullSizeRender.mp3"></audio>
 </head>
 <body>
+    <!-- Startskärm som visas först -->
     <div id="startScreen">
         <h1>G   u lf e r</h1>
-        <p>     Press <strong>Enter</strong> To Start!</p>
+        <p>Press <strong>Enter</strong> To Start!</p>
     </div>
+
+    <!-- Instruktionsskärm som visas när man trycker på space -->
     <div id="instructionScreen" style="display: none;">
-    <h2>Here's how you play:</h2>
-    <p>Press <strong>space</strong> three times to:</p>
-    <ul>
-        <li>1: choose direction</li>
-        <li>2: choose speed</li>
-        <li>3: hit the ball</li>
-    </ul>
-    <p>Press <strong>space</strong> to start!</p>
+        <h2>Here's how you play:</h2>
+        <ul>
+            <li>1: choose direction</li>
+            <li>2: choose speed</li>
+            <li>3: hit the ball</li>
+        </ul>
+        <p>Press <strong>space</strong> to   start!</p>
     </div>
+    
+    <!-- Canvas-elementet där själva spelet kommer att renderas -->
     <canvas id="gameCanvas" class="golfCourse"></canvas>
 
- 
+    <!-- Länkar till JavaScript-filen för spelets funktionalitet -->
     <script type="module" src="js/game.js"></script>
 </body>
 </html>
