@@ -33,7 +33,7 @@ import {state} from "./gameState.js";
 
 */
 
-const drawHitboxes = true; // true = rita hitboxes, false = rita inte hitboxes
+const drawHitboxes = false; // true = rita hitboxes, false = rita inte hitboxes
 export let objects = {
     1:[
 

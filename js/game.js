@@ -162,8 +162,6 @@ function beginGameLoop() {
     gameLoop();
 }
 
-beginGameLoop();
-
 function showEndScreen() {
     document.getElementById("gameCanvas").style.display = "none";
     document.getElementById("endScreen").style.display = "flex";
