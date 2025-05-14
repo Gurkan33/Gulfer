@@ -82,7 +82,7 @@ export let objects = {
     { x: 1600, y: 600, radius: 100, hitbox: 'circle', color: 'yellow', type:"sand"},
     { x: 1700, y: 600, radius: 100, hitbox: 'circle', color: 'yellow', type:"sand"},
     //hole:
-    {x:300, y:800, radius:10, hitbox: "circle", color:"black", type:"hole"}
+    {x:1650, y:430, radius:10, hitbox: "circle", color:"black", type:"hole"}
     
     ],
     2:[
