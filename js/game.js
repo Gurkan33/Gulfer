@@ -161,20 +161,33 @@ function gameLoop() {
 
 
 let gameStarted = false;
-let spacePressed = false
+let spacePressed = false;
+let instructionShown = false;
 
 function startGame() {
+    const startScreen = document.getElementById("startScreen");
+    const instructionScreen = document.getElementById("instructionScreen");
+
     startScreen.style.display = "none";
+    instructionScreen.style.display = "flex";
+    instructionShown = true;
+}
+
+function beginGameLoop() {
+    const instructionScreen = document.getElementById("instructionScreen");
+    const canvas = document.getElementById("gameCanvas");
+
+    instructionScreen.style.display = "none";
     canvas.style.display = "block";
     gameStarted = true;
     gameLoop();
 }
 
-startGame()
-
 document.addEventListener("keydown", function (event) {
-    if (!gameStarted && event.code === "Enter") {
-        // startGame();
+    if (!gameStarted && !instructionShown && event.code === "Enter") {
+        startGame(); // Visa instruktioner
+    } else if (!gameStarted && instructionShown && event.code === "Space") {
+        beginGameLoop(); // Starta själva spelet efter instruktion
     }
 
     if (gameStarted && event.code === "Space" && !spacePressed) {
