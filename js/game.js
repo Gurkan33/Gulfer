@@ -94,11 +94,31 @@ export function goToNextLevel() {
 
     setTimeout(() => {
         state.level++;
+        runGameLoop = true;
         if (!course_levels[state.level]) {
             showEndScreen();
             return;
         }
-        // ...resten av koden för att ladda nästa bana...
+        
+        // Ladda ny bakgrund
+        backgroundImg.src = course_levels[state.level].backgroundImg;
+
+        // Återställ bollen
+        ball.x = course_levels[state.level].teeStartPosX;
+        ball.y = course_levels[state.level].teeStartPosY;
+        ball.speed = 0
+        ball.directionX = 0;
+        ball.directionY = 0;
+        ball.z = 0;
+        ball.zSpeed = 0;
+        ball.inHole = false;
+        ball.inWater = false;
+        ball.inBunker = false;
+        ball.inBush = false;
+        ball.isInAir = false;
+
+        state.strokeCount = 0;
+        state.gamePhase = "angle";
     }, 3000);
 }
 
